@@ -1,4 +1,3 @@
-//var count=rawInput("请输入刷取总视频数");
 launchApp("酷铃声");
 var sh = new Shell(true);
 sleep(3500);

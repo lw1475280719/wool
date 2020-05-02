@@ -1,4 +1,3 @@
-//var count=rawInput("请输入刷取总篇数");
 launchApp("中青看点");
 var sh = new Shell(true);
 sleep(4000);

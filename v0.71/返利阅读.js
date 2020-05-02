@@ -3,8 +3,6 @@ var sh = new Shell(true);
 sleep(3000);
 click("跳过");
 sleep(2500);
-//click("我的");
-//sleep(3500);
 click("签到赚钱");
 //text("签到领现金 签到领现金").find().click();
 sleep(4500);

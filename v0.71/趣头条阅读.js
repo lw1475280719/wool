@@ -1,4 +1,3 @@
-//var count=rawInput("请输入阅读条数");
 launch(getPackageName("趣头条"));
 var sh = new Shell(true);
 sleep(4000);

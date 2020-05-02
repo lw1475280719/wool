@@ -1,4 +1,3 @@
-//var count=rawInput("请输入视频条数");
 launch(getPackageName("趣头条"));
 var sh = new Shell(true);
 sleep(4000);
@@ -6,8 +5,6 @@ click("跳过广告");
 sleep(3500);
 click("小视频");
 sleep(600);
-//Swipe(800, 1600, 800, 286, 666);
-//Swipe(800, 1600, 800, 286, 666);
 sleep(1000);
 for(i=0;i<25;i++)
 {

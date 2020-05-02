@@ -1,4 +1,3 @@
-//var count=rawInput("请输入刷取总视频数");
 launchApp("彩蛋视频");
 var sh = new Shell(true);
 sleep(5500);

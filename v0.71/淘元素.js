@@ -1,4 +1,3 @@
-//var count=rawInput("请输入刷取总视频数");
 launchApp("淘元素");
 var sh = new Shell(true);
 sleep(3000);

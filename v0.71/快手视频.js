@@ -1,4 +1,3 @@
-//var count=rawInput("请输入刷取总视频数");
 launchApp("快手极速版");
 var sh = new Shell(true);
 sleep(2000);
