@@ -12,4 +12,4 @@
 
 
 
-![avatar(https://github.com/jiemo9527/wool/blob/master/xunge.jpeg?raw=true)
+![avatar](https://github.com/jiemo9527/wool/blob/master/xunge.jpeg?raw=true)
