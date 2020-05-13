@@ -17,7 +17,7 @@ sleep(1000);
 for(i=0;i<30;i++)
 {
     click("看视频");
-    sleep(30*1000);
+    sleep(32*1000);
     id("tt_video_ad_close_layout").find().click(); 
     id("tt_video_ad_close").find().click();
     sleep(1000);

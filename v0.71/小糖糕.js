@@ -1,11 +1,11 @@
 
-launchApp("酷铃声");
+launchApp("小糖糕");
 var sh = new Shell(true);
 sleep(3500);
-click("小视频");
+id("main_bottom_tab_vidoe").find().click();
 for(i=0;i<1000;i++)
 {
-    id("iv_close").find().click();
+   // id("iv_close").find().click();
     sleep(2000);
     if(i%6==0)
     {
@@ -16,11 +16,11 @@ for(i=0;i<1000;i++)
     sleep(6000);
     toast("翻页"+(i+1));
     Swipe(800, 1450, 800, 346, 666);
-    id("iv_close").find().click();
+ //   id("iv_close").find().click();
     
 }
 
-sh.exec("am force-stop "+getPackageName("酷铃声"));
+sh.exec("am force-stop "+getPackageName("小糖糕"));
 sleep(1000);
 sh.exit;
-toastLog("【酷铃声】已完成计划任务并退出APP！");
+toastLog("【小糖糕】已完成计划任务并退出APP！");

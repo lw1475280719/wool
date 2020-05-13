@@ -1,21 +1,10 @@
+//var count=rawInput("请输入刷取总视频数");
 launchApp("快手极速版");
 var sh = new Shell(true);
 sleep(2000);
 for (var i= 0; i<1000; i++) 
 { // 建立循环     
 sleep(1000);
-    if(i%6==0)
-  	{
-    toastLog("点赞"+(i/6+1));
-   Tap(1000,1476);
-  	}
-    if(i%10==0)
-  	{
-    toastLog("关注"+(i/10+1));
-   // click("关注");
-    //sleep(600);
- //   back();
-  	}  	
 sleep(4000);
 toastLog("翻页"+(i+1));
 

@@ -3,6 +3,8 @@ var sh = new Shell(true);
 sleep(2500);
 click("跳过");
 sleep(1000);
+//click("我的");
+//sleep(2000);
 sleep(2500);
 //text("javascript:void(0);").find().click();
 //sleep(1000);

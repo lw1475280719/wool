@@ -1,3 +1,4 @@
+//var count=rawInput("请输入刷取总篇数");
 launchApp("中青看点");
 var sh = new Shell(true);
 sleep(4000);
@@ -26,7 +27,7 @@ for(i=1;i<=25;i++)
     sleep(1000);
     swipe(800,450,800,1450,666);
     toastLog("当前进度："+i);
-    sleep(2500);
+    sleep(3500);
 }
 sh.exec("am force-stop "+getPackageName("中青看点"));
 sleep(1000);

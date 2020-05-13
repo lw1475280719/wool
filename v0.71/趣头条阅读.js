@@ -1,9 +1,10 @@
+//var count=rawInput("请输入阅读条数");
 launch(getPackageName("趣头条"));
 var sh = new Shell(true);
 sleep(4000);
 click("跳过广告");
 sleep(2500);
-click("励志");
+click("科技");
 sleep(2500);
 swipe(500,320,500,1450,300);
 sleep(3000);

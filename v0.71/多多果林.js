@@ -9,7 +9,7 @@ id("tt_insert_dislike_icon_img").find().click();
 sleep(1000);
 click("种树收益(元)");
 sleep(1000);
-for(i=0;i<50;i++)
+for(i=0;i<55;i++)
 {
     click("观看100次视频");
     sleep(1000);
