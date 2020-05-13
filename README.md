@@ -9,3 +9,7 @@
 
 ### 食用方法
 安装autojs、下载脚本、导入修改运行
+
+
+
+![avatar](https://github.com/jiemo9527/wool/blob/master/xunge.jpeg?raw=true)
