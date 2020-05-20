@@ -1,9 +1,15 @@
+let {Imgproc} = org.opencv.imgproc;
+let {Core, Size,} = org.opencv.core;
+let {Mat} = com.stardust.autojs.core.opencv;
+let _initIfNeeded = () => runtime.getImages().initOpenCvIfNeeded();
+
 if (typeof cX === "undefined") {
-    _getDisplayParams({global_assign: true});
+    cX = _getDisplay().cX;
 }
 if (typeof debugInfo === "undefined") {
     debugInfo = _debugInfo;
 }
+
 let ext = {
     getName: (img) => {
         let img_str = img.toString().split("@")[1];
@@ -17,6 +23,11 @@ let ext = {
             return !!e.message.match(/has been recycled/);
         }
     },
+    isImageWrapper: (img) => (img
+        && typeof img === "object"
+        && img["getClass"]
+        && img.toString().match(/ImageWrapper/)
+    ),
     reclaim: _reclaim,
     capt: () => {
         let _max = 10;
@@ -40,8 +51,16 @@ let ext = {
     tryRequestScreenCapture: _permitCapt, // legacy
     permitCapt: _permitCapt,
     permit: _permitCapt,
-    matchTpl: (capt, tpl, opt) => {
-        let _capt = capt || images.capt();
+    matchTpl: function (capt, tpl, opt) {
+        let _capt;
+        let _no_capt_fg;
+        if (!capt) {
+            _capt = images.capt();
+            _no_capt_fg = true;
+        } else {
+            _capt = capt;
+        }
+
         let _opt = opt || {};
 
         let _name = _opt.name;
@@ -71,6 +90,12 @@ let ext = {
                 _res_range[0] = +_w.toFixed(2);
             }
             _res.range = _res_range;
+
+            if (_no_capt_fg) {
+                _capt.recycle();
+                _capt = null;
+            }
+
             return _res;
         }
         return null;
@@ -87,10 +112,10 @@ let ext = {
                 return $$af[_key];
             }
             let _img = images.read(_path);
-            if (_af) {
-                $$af[_key] = _img;
+            if (!_af) {
+                $$af = {};
             }
-            return _img;
+            return $$af[_key] = _img;
         }
 
         function _byAttempt(tpl) {
@@ -108,6 +133,10 @@ let ext = {
                     let _resized = images.resize(
                         tpl, [_new_w, _new_h + j], "LANCZOS4"
                     );
+                    let _recycleNow = () => {
+                        _resized.recycle();
+                        _resized = null;
+                    };
                     let _par = {};
                     let _thrd = _opt.threshold_attempt;
                     let _region = _opt.region_attempt;
@@ -125,6 +154,7 @@ let ext = {
                         _res_range = [+(i * 720 / W).toFixed(2), j];
                         return _resized;
                     }
+                    _recycleNow();
                 }
             }
         }
@@ -171,26 +201,48 @@ let ext = {
         }
         return _bnd;
     },
+    bilateralFilter: function (img, d, sigmaColor, sigmaSpace, borderType) {
+        _initIfNeeded();
+        let mat = new Mat();
+        let size = d || 0;
+        let sc = sigmaColor || 40;
+        let ss = sigmaSpace || 20;
+        let type = Core["BORDER_" + (borderType || "DEFAULT")];
+        Imgproc.bilateralFilter(img["mat"], mat, size, sc, ss, type);
+        return images.matToImage(mat);
+    },
 };
 ext.capture = ext.captureCurrentScreen = () => ext.capt();
 
-module.exports = Object.assign({
-    load: () => Object.assign(global["images"], ext),
-}, ext);
+module.exports = ext;
+module.exports.load = () => Object.assign(global["images"], ext);
+
+// tool function(s) //
+
+function _newSize(size) {
+    if (!Array.isArray(size)) size = [size, size];
+    if (size.length === 1) size = [size[0], size[0]];
+    return new Size(size[0], size[1]);
+}
 
 /**
- * Just an insurance way of images.requestScreenCapture() to avoid infinite stuck or stalled without any hint or log
- * During this operation, permission prompt window will be confirmed (with checkbox checked if possible) automatically with effort
+ * Just an insurance way of images.requestScreenCapture()
+ *  to avoid infinite stuck or stalled without any hint or log
+ * During this operation, permission prompt window
+ *  will be confirmed (with checkbox checked if possible)
+ *  automatically with effort
  * @param [params] {object}
  * @param [params.debug_info_flag] {boolean}
  * @param [params.restart_this_engine_flag=false] {boolean}
  * @param [params.restart_this_engine_params] {object}
- * @param [params.restart_this_engine_params.new_file] {string} - new engine task name with or without path or file extension name
+ * @param [params.restart_this_engine_params.new_file] {string}
+ *  - new engine task name with or without path or file extension name
  * <br>
  *     -- *DEFAULT* - old engine task <br>
  *     -- new file - like "hello.js", "../hello.js" or "hello"
  * @param [params.restart_this_engine_params.debug_info_flag] {boolean}
- * @param [params.restart_this_engine_params.max_restart_engine_times=3] {number} - max restart times for avoiding infinite recursion
+ * @param [params.restart_this_engine_params.max_restart_engine_times=3] {number}
+ *  - max restart times for avoiding infinite recursion
  * @return {boolean}
  */
 function _permitCapt(params) {
@@ -207,14 +259,24 @@ function _permitCapt(params) {
     }
 
     let _par = params || {};
-    let _debugInfo = (m, fg) => (typeof debugInfo === "undefined" ? debugInfoRaw : debugInfo)(m, fg, _par.debug_info_flag);
+    let _debugInfo = (m, fg) => (
+        typeof debugInfo === "undefined" ? debugInfoRaw : debugInfo
+    )(m, fg, _par.debug_info_flag);
 
     _debugInfo("开始申请截图权限");
 
-    let _waitForAction = typeof waitForAction === "undefined" ? waitForActionRaw : waitForAction;
-    let _messageAction = typeof messageAction === "undefined" ? messageActionRaw : messageAction;
-    let _clickAction = typeof clickAction === "undefined" ? clickActionRaw : clickAction;
-    let _getSelector = typeof getSelector === "undefined" ? getSelectorRaw : getSelector;
+    let _waitForAction = (
+        typeof waitForAction === "undefined" ? waitForActionRaw : waitForAction
+    );
+    let _messageAction = (
+        typeof messageAction === "undefined" ? messageActionRaw : messageAction
+    );
+    let _clickAction = (
+        typeof clickAction === "undefined" ? clickActionRaw : clickAction
+    );
+    let _getSelector = (
+        typeof getSelector === "undefined" ? getSelectorRaw : getSelector
+    );
     let _$$sel = _getSelector();
 
     if (_$$und(_par.restart_this_engine_flag)) {
@@ -237,19 +299,19 @@ function _permitCapt(params) {
         let _rex_sure = /S(tart|TART) [Nn][Oo][Ww]|立即开始|允许/;
         let _sel_sure = type => _$$sel.pickup(_rex_sure, type);
 
-        if (_waitForAction(_sel_sure, 5000)) {
-            if (_waitForAction(_sel_remember, 1000)) {
+        if (_waitForAction(_sel_sure, 5e3)) {
+            if (_waitForAction(_sel_remember, 1e3)) {
                 _debugInfo('勾选"不再提示"复选框');
                 _clickAction(_sel_remember(), "w");
             }
-            if (_waitForAction(_sel_sure, 2000)) {
+            if (_waitForAction(_sel_sure, 2e3)) {
                 let _node = _sel_sure();
                 let _act_msg = '点击"' + _sel_sure("txt") + '"按钮';
 
                 _debugInfo(_act_msg);
                 _clickAction(_node, "w");
 
-                if (!_waitForAction(() => !_sel_sure(), 1000)) {
+                if (!_waitForAction(() => !_sel_sure(), 1e3)) {
                     _debugInfo("尝试click()方法再次" + _act_msg);
                     _clickAction(_node, "click");
                 }
@@ -258,7 +320,7 @@ function _permitCapt(params) {
     });
 
     let _thread_monitor = threads.start(function () {
-        if (_waitForAction(() => !!_req_result, 3600, 300)) {
+        if (_waitForAction(() => !!_req_result, 3.6e3, 300)) {
             _thread_prompt.interrupt();
             return _debugInfo("截图权限申请结果: " + _req_result);
         }
@@ -273,11 +335,11 @@ function _permitCapt(params) {
             try {
                 let _m = android.os.Build.MANUFACTURER.toLowerCase();
                 if (_m.match(/xiaomi/)) {
-                    _debugInfo("__split_line__dash_");
+                    _debugInfo("__split_line__dash__");
                     _debugInfo("检测到当前设备制造商为小米", 3);
                     _debugInfo("可能需要给Auto.js以下权限:", 3);
                     _debugInfo('>"后台弹出界面"', 3);
-                    _debugInfo("__split_line__dash_");
+                    _debugInfo("__split_line__dash__");
                 }
             } catch (e) {
                 // nothing to do here
@@ -329,7 +391,7 @@ function _permitCapt(params) {
         if (!cond_func) return true;
         let classof = o => Object.prototype.toString.call(o).slice(8, -1);
         if (classof(cond_func) === "JavaObject") _cond_func = () => cond_func.exists();
-        let _check_time = typeof time_params === "object" && time_params[0] || time_params || 10000;
+        let _check_time = typeof time_params === "object" && time_params[0] || time_params || 10e3;
         let _check_interval = typeof time_params === "object" && time_params[1] || 200;
         while (!_cond_func() && _check_time >= 0) {
             sleep(_check_interval);
@@ -340,7 +402,7 @@ function _permitCapt(params) {
 
     function clickActionRaw(kw) {
         let classof = o => Object.prototype.toString.call(o).slice(8, -1);
-        let _kw = classof(_kw) === "Array" ? kw[0] : kw;
+        let _kw = classof(kw) === "Array" ? kw[0] : kw;
         let _key_node = classof(_kw) === "JavaObject" && _kw.toString().match(/UiObject/) ? _kw : _kw.findOnce();
         if (!_key_node) return;
         let _bounds = _key_node.bounds();
@@ -416,13 +478,11 @@ function _permitCapt(params) {
 
         let _file_path = files.path(_file_name.match(/\.js$/) ? _file_name : (_file_name + ".js"));
         _debugInfo("运行新引擎任务:\n" + _file_path);
-        engines.execScriptFile(_file_path, {
-            arguments: Object.assign({}, _params, {
-                max_restart_engine_times: _max_restart_engine_times - 1,
-                max_restart_engine_times_backup: _max_restart_engine_times_backup,
-                instant_run_flag: _instant_run_flag,
-            }),
-        });
+        _runJsFile(_file_path, Object.assign({}, _params, {
+            max_restart_engine_times: _max_restart_engine_times - 1,
+            max_restart_engine_times_backup: _max_restart_engine_times_backup,
+            instant_run_flag: _instant_run_flag,
+        }));
         _debugInfo("强制停止旧引擎任务");
         // _my_engine.forceStop();
         engines.all().filter(e => e.id === _my_engine_id).forEach(e => e.forceStop());
@@ -475,8 +535,9 @@ function _permitCapt(params) {
 function _reclaim() {
     for (let i = 0, len = arguments.length; i < len; i += 1) {
         let img = arguments[i];
-        if (!img) continue;
-        img.recycle();
+        if (images.isImageWrapper(img)) {
+            img.recycle();
+        }
         /*
             `img = null;` is not necessary
             as which only modified the point
@@ -485,81 +546,95 @@ function _reclaim() {
     }
 }
 
-// updated: Jan 13, 2020
-function _getDisplayParams(params) {
-    global["$$flag"] = global["$$flag"] || {};
+// updated: Feb 5, 2020
+function _getDisplay(global_assign, params) {
     let $$flag = global["$$flag"];
+    if (!$$flag) {
+        $$flag = global["$$flag"] = {};
+    }
 
-    let _params = params || {};
+    let _par;
+    let _glob_asg;
+    if (typeof global_assign === "boolean") {
+        _par = params || {};
+        _glob_asg = global_assign;
+    } else {
+        _par = global_assign || {};
+        _glob_asg = _par.global_assign;
+    }
 
-    let _waitForAction = typeof waitForAction === "undefined" ? waitForActionRaw : waitForAction;
-    let _debugInfo = (_msg, _info_flag) => (typeof debugInfo === "undefined" ? debugInfoRaw : debugInfo)(_msg, _info_flag, _params.debug_info_flag);
-    let _window_service_display = context.getSystemService(context.WINDOW_SERVICE).getDefaultDisplay();
-    let [_W, _H] = [];
+    let _waitForAction = typeof waitForAction === "undefined"
+        ? waitForActionRaw
+        : waitForAction;
+    let _debugInfo = (m, fg) => (typeof debugInfo === "undefined"
+        ? debugInfoRaw
+        : debugInfo)(m, fg, _par.debug_info_flag);
+    let $_str = x => typeof x === "string";
+
+    let _W, _H;
     let _disp = {};
-    if (_waitForAction(() => _disp = _getDispData(), 3000, 500)) {
-        let cX = (num) => {
-            let _unit = Math.abs(num) >= 1 ? _W / 720 : _W;
-            let _x = Math.round(num * _unit);
-            return Math.min(_x, _W);
-        };
-        let cY = (num, aspect_ratio) => {
-            let ratio = aspect_ratio;
-            if (!~ratio) ratio = "16:9"; // -1
-            if (typeof ratio === "string" && ratio.match(/^\d+:\d+$/)) {
-                let _split = ratio.split(":");
-                ratio = _split[0] / _split[1];
-            }
-            ratio = ratio || _H / _W;
-            ratio = ratio < 1 ? 1 / ratio : ratio;
-            let _h = _W * ratio;
-            let _unit = Math.abs(num) >= 1 ? _h / 1280 : _h;
-            let _y = Math.round(num * _unit);
-            return Math.min(_y, _H);
-        };
+    let _win_svc = context.getSystemService(context.WINDOW_SERVICE);
+    let _win_svc_disp = _win_svc.getDefaultDisplay();
 
+    if (!_waitForAction(() => _disp = _getDisp(), 3e3, 500)) {
+        return console.error("device.getDisplay()返回结果异常");
+    }
+    _showDisp();
+    _assignGlob();
+    return Object.assign(_disp, {cX: _cX, cY: _cY});
+
+    // tool function(s) //
+
+    function _cX(num) {
+        let _unit = Math.abs(num) >= 1 ? _W / 720 : _W;
+        let _x = Math.round(num * _unit);
+        return Math.min(_x, _W);
+    }
+
+    function _cY(num, aspect_ratio) {
+        let _ratio = aspect_ratio;
+        if (!~_ratio) _ratio = "16:9"; // -1
+        if ($_str(_ratio) && _ratio.match(/^\d+:\d+$/)) {
+            let _split = _ratio.split(":");
+            _ratio = _split[0] / _split[1];
+        }
+        _ratio = _ratio || _H / _W;
+        _ratio = _ratio < 1 ? 1 / _ratio : _ratio;
+        let _h = _W * _ratio;
+        let _unit = Math.abs(num) >= 1 ? _h / 1280 : _h;
+        let _y = Math.round(num * _unit);
+        return Math.min(_y, _H);
+    }
+
+    function _showDisp() {
         if (!$$flag.display_params_got) {
             _debugInfo("屏幕宽高: " + _W + " × " + _H);
             _debugInfo("可用屏幕高度: " + _disp.USABLE_HEIGHT);
             $$flag.display_params_got = true;
         }
-
-        _params.global_assign && Object.assign(global, {
-            W: _W, WIDTH: _W,
-            halfW: Math.round(_W / 2),
-            uW: _disp.USABLE_WIDTH,
-            H: _H, HEIGHT: _H,
-            uH: _disp.USABLE_HEIGHT,
-            scrO: _disp.screen_orientation,
-            staH: _disp.status_bar_height,
-            navH: _disp.navigation_bar_height,
-            navHC: _disp.navigation_bar_height_computed,
-            actH: _disp.action_bar_default_height,
-            cX: cX, cY: cY,
-        });
-
-        return Object.assign(_disp, {cX: cX, cY: cY});
     }
-    console.error("getDisplayParams()返回结果异常");
 
-    // tool function(s) //
-
-    function _getDispData() {
+    function _getDisp() {
         try {
-            _W = +_window_service_display.getWidth();
-            _H = +_window_service_display.getHeight();
-            if (!(_W * _H)) throw Error();
+            _W = +_win_svc_disp.getWidth();
+            _H = +_win_svc_disp.getHeight();
+            if (!(_W * _H)) {
+                throw Error();
+            }
 
             // left: 1, right: 3, portrait: 0 (or 2 ?)
-            let _SCR_O = +_window_service_display.getOrientation();
+            let _SCR_O = +_win_svc_disp.getOrientation();
             let _is_scr_port = ~[0, 2].indexOf(_SCR_O);
-            let _MAX = +_window_service_display.maximumSizeDimension;
+            let _MAX = +_win_svc_disp.maximumSizeDimension;
 
             let [_UH, _UW] = [_H, _W];
-            let _getDataByDimenName = (name) => {
+            let _dimen = (name) => {
                 let resources = context.getResources();
                 let resource_id = resources.getIdentifier(name, "dimen", "android");
-                return resource_id > 0 ? resources.getDimensionPixelSize(resource_id) : NaN;
+                if (resource_id > 0) {
+                    return resources.getDimensionPixelSize(resource_id);
+                }
+                return NaN;
             };
 
             _is_scr_port ? [_UH, _H] = [_H, _MAX] : [_UW, _W] = [_W, _MAX];
@@ -570,23 +645,40 @@ function _getDisplayParams(params) {
                 HEIGHT: _H,
                 USABLE_HEIGHT: _UH,
                 screen_orientation: _SCR_O,
-                status_bar_height: _getDataByDimenName("status_bar_height"),
-                navigation_bar_height: _getDataByDimenName("navigation_bar_height"),
+                status_bar_height: _dimen("status_bar_height"),
+                navigation_bar_height: _dimen("navigation_bar_height"),
                 navigation_bar_height_computed: _is_scr_port ? _H - _UH : _W - _UW,
-                action_bar_default_height: _getDataByDimenName("action_bar_default_height"),
+                action_bar_default_height: _dimen("action_bar_default_height"),
             };
         } catch (e) {
             try {
                 _W = +device.width;
                 _H = +device.height;
-                if (!(_W * _H)) throw Error();
-                return {
+                return _W && _H && {
                     WIDTH: _W,
                     HEIGHT: _H,
-                    USABLE_HEIGHT: ~~(_H * 0.9), // evaluated value
+                    USABLE_HEIGHT: Math.trunc(_H * 0.9),
                 };
             } catch (e) {
             }
+        }
+    }
+
+    function _assignGlob() {
+        if (_glob_asg) {
+            Object.assign(global, {
+                W: _W, WIDTH: _W,
+                halfW: Math.round(_W / 2),
+                uW: _disp.USABLE_WIDTH,
+                H: _H, HEIGHT: _H,
+                uH: _disp.USABLE_HEIGHT,
+                scrO: _disp.screen_orientation,
+                staH: _disp.status_bar_height,
+                navH: _disp.navigation_bar_height,
+                navHC: _disp.navigation_bar_height_computed,
+                actH: _disp.action_bar_default_height,
+                cX: _cX, cY: _cY,
+            });
         }
     }
 
@@ -597,7 +689,7 @@ function _getDisplayParams(params) {
         if (!cond_func) return true;
         let classof = o => Object.prototype.toString.call(o).slice(8, -1);
         if (classof(cond_func) === "JavaObject") _cond_func = () => cond_func.exists();
-        let _check_time = typeof time_params === "object" && time_params[0] || time_params || 10000;
+        let _check_time = typeof time_params === "object" && time_params[0] || time_params || 10e3;
         let _check_interval = typeof time_params === "object" && time_params[1] || 200;
         while (!_cond_func() && _check_time >= 0) {
             sleep(_check_interval);
@@ -695,4 +787,18 @@ function _debugInfo(msg, info_flag, forcible_flag) {
         }
         return _msg;
     }
+}
+
+// updated: May 5, 2020
+function _runJsFile(file_name, e_args) {
+    let _path = files.path(file_name.match(/\.js$/) ? file_name : (file_name + ".js"));
+    if (e_args) {
+        return engines.execScriptFile(_path, {arguments: e_args});
+    }
+    return app.startActivity({
+        action: "VIEW",
+        packageName: context.packageName,
+        className: "org.autojs.autojs.external.open.RunIntentActivity",
+        data: "file://" + _path,
+    });
 }

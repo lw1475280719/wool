@@ -1,22 +1,23 @@
 
 launchApp("小糖糕");
 var sh = new Shell(true);
-sleep(3500);
-id("main_bottom_tab_vidoe").find().click();
+sleep(5500);
+click("暂不领取");
+sleep(1000);
+Tap(320,1980);
 for(i=0;i<1000;i++)
 {
-   // id("iv_close").find().click();
-    sleep(2000);
+    sleep(4000);
     if(i%6==0)
     {
     toastLog("点赞"+(i/6+1));
     id("tv_like").find().click();
     }
-    
-    sleep(6000);
+    back();
+    sleep(4000);
     toast("翻页"+(i+1));
     Swipe(800, 1450, 800, 346, 666);
- //   id("iv_close").find().click();
+     
     
 }
 

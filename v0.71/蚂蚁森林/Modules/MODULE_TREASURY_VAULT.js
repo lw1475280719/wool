@@ -116,7 +116,7 @@ module.exports = {
             "或脚本运行错误等其他意外情况\n" +
             "将可能导致获取账户名失败\n\n" +
             '点击"开始获取"按钮开始操作',
-        login_password_needed: // 123
+        login_password_needed: // 需要密码
             "请在支付宝密码输入框中\n" +
             "手动填写密码\n" +
             '然后点击"登录"按钮\n' +
@@ -131,6 +131,28 @@ module.exports = {
             "* 设置 0 值可不限制回切次数\n" +
             '* 详细情况参阅"帮助与支持"\n' +
             '-- 位于"账户功能"主页',
+        about_blacklist: // 关于黑名单管理
+            "能量罩黑名单:\n\n" +
+            "仅用作显示与查看\n" +
+            "当检测到好友能量罩时\n" +
+            "脚本自动添加好友到此名单中\n" +
+            "获取并计算能量罩到期时间\n" +
+            "能量罩到期后好友将自动移除\n\n" +
+            "收取/帮收黑名单:\n\n" +
+            "用户可自行管理此名单\n" +
+            "位于此名单中的好友\n" +
+            "脚本将跳过此人的能量球检查\n" +
+            "可指定自动解除时间\n\n" +
+            "前置应用黑名单:\n\n" +
+            "项目自动运行时\n" +
+            "如果检测到当前应用在此名单中\n" +
+            "例如名单里有数独游戏\n" +
+            "而此时用户正在运行此游戏\n" +
+            "则脚本将放弃执行定时任务\n" +
+            "将任务推迟数分钟再执行\n" +
+            "推迟分钟按以下方案逐次增量\n" +
+            "[ 1, 1, 2, 3, 5, 8, 10 ]\n" +
+            "达到 10 后将一直保持 10 分钟",
         balls_click_interval: // 能量球点击间隔
             "当可点击的能量球数量超过 1 时\n" +
             "此设置值影响能量球之间的点击间隔\n\n" +
@@ -140,11 +162,30 @@ module.exports = {
             "2. 好友森林能量球\n\n" +
             "设置过小值可能遗漏点击能量球\n" +
             "设置过大值将影响快速收取体验",
-        max_own_forest_balls_ready_time: // 主页能量球最大准备时间
+        max_own_forest_balls_ready_time: // 主页控件最大准备时间
             "森林主页控件准备完毕后\n" +
             "仍需部分时间等待能量球控件被识别\n\n" +
             "设置过小值可能导致能量球识别遗漏\n" +
             "设置过大值将在主页无能量球时牺牲较多等待时间",
+        homepage_water_ball_check_limit: // 金色球最大连续检查次数
+            "限制连续检查金色球的次数\n" +
+            "避免未来一定概率可能出现的\n" +
+            "错误识别金色球位置\n" +
+            "并无限进行无效点击的问题\n\n" +
+            "设置 0 值表示不作限制",
+        homepage_water_ball_max_hue_b0: // 金色球最大色相值 (无蓝分量)
+            "用以判断能量球是否为浇水能量球\n" +
+            "即金色能量球\n" +
+            "判断及计算方法:\n" +
+            "控件中心横向 40% 线性扫描\n" +
+            "每 2 像素判断色值\n" +
+            "色值转换为 RGB 色值\n" +
+            "计算 120 - (R / G) × 60\n" +
+            "得到无蓝分量的色值 (Hue)\n" +
+            "Hue 在所有像素值中存在极大值\n" +
+            "统计出可同时适配白天及黑夜场景\n" +
+            "且数值出现概率合适的极大值\n" +
+            "将此值作为参数值即可实现匹配",
         homepage_monitor_threshold: // 主页能量球循环监测阈值
             "当进入主页存在未成熟能量球\n" +
             "且最小成熟倒计时达到阈值时\n" +
@@ -167,25 +208,71 @@ module.exports = {
             "排行榜识别绿色手形图标的参照色值\n\n" +
             "示例:\n" +
             "rgb(67,160,71)\n" +
-            "#43a047",
+            "#aeb0b3",
         friend_collect_icon_threshold: // 收取图标颜色检测阈值
-            "排行榜识别绿色手形图标的参照色值检测阈值",
+            "排行榜识别绿色手形图标的\n" +
+            "参照色值检测阈值\n" +
+            "阈值越大 匹配越宽松 反之越严格\n" +
+            "0 表示完全相似",
+        fri_forest_pool_limit: // 好友森林样本采集容量
+            "限制用于存放好友森林截图样本的\n" +
+            "采集池数量上限\n\n" +
+            "数量过多将导致采集时间过长\n" +
+            "影响收取体验\n" +
+            "数量过少将导致识别率受影响\n" +
+            "出现遗漏或误判",
+        fri_forest_pool_itv: // 好友森林样本采集间隔
+            "好友森林样本采集池样本之间的" +
+            "存放间隔\n\n" +
+            "间隔的意义主要在于保证\n" +
+            "相邻两个样本之间的有效差异性\n" +
+            "间隔过大将导致采集时间过长\n" +
+            "影响收取体验\n" +
+            "间隔过小将导致样本差异过小\n" +
+            "影响识别率并出现遗漏或误判",
+        fri_forest_balls_region: // 好友森林能量球分布区域
+            "此参数用于限定好友森林页面能量球的分布区域\n\n" +
+            "详情参阅页面下方的\"帮助与支持\"\n\n" +
+            "也可使用页面下方的\"可视化工具\"\n" +
+            "利用悬浮窗配合控制条进行参数调整\n\n" +
+            "* 此页面配置功能暂未开发完成\n" +
+            "* 可视化工具暂未开发完成",
+        ripe_ball_ident_color: // 成熟能量球颜色色值
+            "好友森林识别成熟能量球的参照色值\n\n" +
+            "示例:\n" +
+            "rgb(67,160,71)\n" +
+            "#aeb0b3",
+        ripe_ball_threshold: // 成熟能量球颜色检测阈值
+            "好友森林识别成熟能量球的\n" +
+            "参照色值检测阈值\n" +
+            "阈值越大 匹配越宽松 反之越严格\n" +
+            "0 表示完全相似",
         help_collect_icon_color: // 帮收图标颜色色值
             "排行榜识别橙色爱心图标的参照色值\n\n" +
             "示例:\n" +
             "rgb(67,160,71)\n" +
             "#43a047",
         help_collect_icon_threshold: // 帮收图标颜色检测阈值
-            "排行榜识别橙色爱心图标的参照色值检测阈值",
-        help_collect_ball_color: // 帮收能量球颜色色值
+            "排行榜识别橙色爱心图标的\n" +
+            "参照色值检测阈值\n" +
+            "阈值越大 匹配越宽松 反之越严格\n" +
+            "0 表示完全相似",
+        help_ball_ident_colors: // 帮收能量球颜色色值
             "好友森林识别橙色能量球的参照色值\n\n" +
             "示例:\n" +
             "rgb(67,160,71)\n" +
             "#43a047",
-        help_collect_ball_threshold: // 帮收能量球颜色检测阈值
-            "好友森林识别橙色能量球的参照色值检测阈值",
+        help_ball_threshold: // 帮收能量球颜色检测阈值
+            "好友森林识别橙色能量球的\n" +
+            "参照色值检测阈值\n" +
+            "阈值越大 匹配越宽松 反之越严格",
         help_collect_ball_intensity: // 帮收能量球样本采集密度
-            "好友森林橙色能量球图片样本采集密度",
+            "好友森林橙色能量球图片样本采集密度\n" +
+            "密度值间接体现采集样本的时间长度\n" +
+            "公式如下:\n" +
+            "t = ρ × 160 - 920 (ms)\n" +
+            "密度越大 采集时间越长 匹配度可能更佳\n" +
+            "反之可能降低匹配度 但会相应提升效率",
         unlock_code: // 设置锁屏解锁密码
             "密码长度不小于 3 位\n" +
             "无密码请留空\n\n" +
@@ -199,7 +286,7 @@ module.exports = {
             "密码解锁: 10btv69\n\n" +
             "图案解锁: (点阵序号从 1 开始)\n" +
             "3 × 3 点阵 - 1235789 或 1,2,3,5,7,8,9\n" +
-            "4 × 4点阵 - 1,2,3,4,8,12,16\n" +
+            "4 × 4 点阵 - 1,2,3,4,8,12,16\n" +
             "* 点阵密码将自动简化",
         about_pattern_simplification: // 图案解锁密码简化
             "简化原理:\n" +
@@ -427,7 +514,36 @@ module.exports = {
             "* 保险任务连续执行次数\n" +
             '-- 受到"最大连续保险次数"约束\n' +
             "-- 达到此限制时将不再设置保险任务\n" +
-            "-- 避免保险任务导致脚本无限循环\n",
+            "-- 避免保险任务导致脚本无限循环\n\n" +
+            "有效时段:\n\n" +
+            "可使项目在自动设置定时任务时\n" +
+            "仅会落在设置的有效时段内\n" +
+            "避免在某些时间对用户的干扰\n" +
+            "如设置时段 [ 09:00, 14:00 ]\n" +
+            "则脚本运行结束前设置定时任务时\n" +
+            "不会超出这个范围\n" +
+            "举三种情况的例子\n" +
+            "分别表示不同的定时任务运行时间\n" +
+            "1. 09:30\n" +
+            "正常制定任务\n" +
+            "因为 09:30 落在时段范围内\n" +
+            "2. 15:20\n" +
+            "制定第二天 09:00 的任务\n" +
+            "3. 07:10\n" +
+            "制定当天 09:00 的任务\n" +
+            "如果时段结束值大于等于起始值\n" +
+            "同延时接力机制一样\n" +
+            "则将结束值视为第二天的时间点\n" +
+            "例如设置 [ 21:00, 07:45 ]\n" +
+            "则表示晚 9 点到次日 07:45\n" +
+            "晚 23 点和早 6 点都在范围内\n" +
+            "而上午 11 点则不在上述范围\n" +
+            "注意区分 [ 07:45, 21:00 ]\n" +
+            "如有多个时段将做并集处理\n" +
+            "如果设置了一个 24 小时区间\n" +
+            "则时段管理将失去意义\n" +
+            "如 [ 05:23, 05:23 ]\n" +
+            "等同于\"全天有效\"的效果",
         max_running_time_global: // 脚本单次运行最大时间
             "设置值用于脚本单次运行\n" +
             "可消耗的最大时间\n" +
@@ -569,6 +685,24 @@ module.exports = {
         rank_list_bottom_template_hint_not_exists: // 排行榜底部控件图片模板不存在附加提示
             "当前暂未生成图片模板\n" +
             "脚本在下次运行时将自动生成新模板",
+        about_auto_enable_a11y_svc: // 关于自动开启无障碍服务
+            "通过修改系统无障碍服务的列表参数\n" +
+            "实现Auto.js无障碍服务的自动开启\n" +
+            "此过程需要授予Auto.js以下权限:\n\n" +
+            "WRITE_SECURE_SETTINGS\n\n" +
+            "如果设备已经获取Root权限\n" +
+            "脚本会自动自我授权\n" +
+            "否则需要将手机连接到计算机\n" +
+            "然后在计算机使用ADB工具\n" +
+            "执行以下指令(无换行):\n\n" +
+            "adb shell pm grant org.autojs.autojs " +
+            "android.permission.WRITE_SECURE_SETTINGS\n\n" +
+            "执行后Auto.js将获取上述权限\n" +
+            "如需撤销授权需将上述指令的\n" +
+            "grant替换为revoke\n\n" +
+            "注: 如果没有权限授权\n" +
+            "脚本则会在需要的时候\n" +
+            "提示用户手动开启无障碍服务",
         about_app_launch_springboard: // 关于启动跳板
             "某些设备或应用无法直接调用 APP\n" +
             "如 launch() 或 startActivity() 等\n" +
@@ -611,13 +745,18 @@ module.exports = {
             "除非已确定此任务的异常性\n" +
             "否则强烈不建议删除此任务\n\n" +
             "确定要删除最小倒计时任务吗",
+        prompt_before_running_countdown_seconds: // 提示对话框倒计时时长
+            "倒计时结束前\n" +
+            "用户可自主点击按钮执行相应操作\n" +
+            "否则倒计时超时后脚本将自动执行",
+        about_eballs_recognition: //
+            "* 暂未开发完成",
     },
     image_base64_data: {
         ic_outlook: _icOutlook(),
         ic_qq: _icQq(),
         ic_github: _icGithub(),
         ic_fetch: _icFetch(),
-        ic_oball: _icOball(),
         avt_detective: _avtDetective(),
         qr_alipay_dnt: _qrAlipayDnt(),
         qr_wechat_dnt: _qrWechatDnt(),
@@ -640,10 +779,6 @@ function _icGithub() {
 
 function _icFetch() {
     return "iVBORw0KGgoAAAANSUhEUgAAAB8AAAAVCAYAAAC+NTVfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYYAAB2GAV2iE4EAAAP7SURBVEhLrZZLbBtFGMf/6/UjtuNXHT/qPFQnoQ2IIgoigLhwohx5XLiiigsSEvdWlS/cgAOFA+oFKtFLJS4pCFVQASq0gaI0cerETRzHceLYaeza8SOx17tmvmHtxPaGtGl/kuXZmdn5vvmeK5y++HHjGXc/zr7xAdxWB7Qo17bx92oEJ32jrT11RcbkShhjnmBrLry+gIDdy8efXLuISHYNUYMMmc90I+rfGQ8JpTKWskk8338CFmOPurSLUTTAY3Vhaj0Kl9mOHr0ROkEHt8WB2cwiE+j579nqxFohg0GXH8fcAYSTc5CrNeTFhnpSO6Ll7fHQlq4BuVDAwkYcT/uHYe+xqsu7kAIkeDa9CG/vEeh1Ip8TmdBkPg2fzc0VcJptKFYr6Hd4UaiUEEstYdMAaIkXHW+9HJIEgBRQtoqIZpbwbGBUUwG6sUlnwOJmEl7bES6M9pELyGL0TL9sOc+fAw4PbiWmUaxLKAvd4nXqPyps8R7zz+JmCp9dv8QOKKgr7fjsbhy196GwXVJnwM0dYwqREgTdmixDe0/4jsGxj9Nbwom9Cnx940rrsE7o8J16tbVOFtGLes3948HnYFcAS4OZt4M24QQpsGxQcDtxFxMzv6qz3axvbeLOWlR9AkbcA1yJTihDXL122BpdoqALSjocl0TQ/4Aswsk2FQUFaT3w/cwviGVX1a3tPOUZgknPIukAKA33M7145sP3Q6f8Iwgy/9ggwFypwlVTUCcr1WXkSjm8NnyKB9Je6JYU4Q9DcaeMqfjdrqgXGgx1zIvJaj6DqeQ8bi5PI5lNQ1IUnD19Bq8w3x2WRC6Fc1e/xLRSQZ5ZtUmb8L2QIpPLYVyb/5MVnzG89+Kb6sqjQ4F47uoF3NxYRpzFUxNBkusNSov/g14+aM9BXJqcwJWpnzFrZgVNnRMNrwZCVpOFF4T96PT3YegxmvBXIgyDJPNyS+YWja+Phv6JzWDh/gqcVttDB9Gj0scKkc/hRjwdh7EqIccUEGvvvhQqsdKay9/HncQssqU8Rr1Dmjn7uAw5/RjuG0CE1QcqudyeFIHU+ublbUxE/sD5H77CrfgMf+FJYzGa1ZHaWGhAPqDiTw2mWiljjmlHVhjzB3n3ehKsFTbwOesb8WIWSb28K7wJdbgs88cOi/BUJok51kKpP5PPHgfK9U+vf4t4LoMYS7cak9MlvEnTCjvFLf5RYGK3H2BKHCbloiy/v/jtMqIP0lww9Q9iX+EEWYGisiHVsbByD9MpFijbZdjNvZr9XguKnQu/X+ampriiGzcRBr/5SLPCdUIt8agiwsYqhIel5Ih7EC8MjuFk/3HeYrX4KXID393+EeusWsa6vuWAfwG2sLBBZNIRMQAAAABJRU5ErkJggg==";
-}
-
-function _icOball() {
-    return "iVBORw0KGgoAAAANSUhEUgAAAB4AAAANCAYAAAC+ct6XAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJcEhZcwAAHYYAAB2GAV2iE4EAAAHsSURBVDhPlZQ9SBxBGIbfmT2vMCJyV8gVCrnkChELI2gTQRObqyImpWkCdiFIChuvuEIbKwXtJCDaWCimic2ZICjkCg0Y0qjxhxRJQOUgghy7O5P9ZmfvZ13P2weWnW+G+Z75Z+bSKykKvxBJT4OnnuM+7P0V2Dvz4IlOFYvfP2A8fQvjyaiKayGOtmBtToK3tAHFuT5pH+ZkGKyDNUn96KNyGMhF/Zj5aVJG0lN6TC40MnH8BfLyJ1j8ESJDL4GGbt3qYn9fV3+ja0T9S5jfYOXWSn3548FbK2ltZsDEvz+SNbXqKrdSHOV0VMa/nDQ4f0JvG/zw1JCzleXJyeu/4JVSNdMAKUEJKTERRkpQTurjQU6uywpa3lpQYmt3IZTUw5+7SlwPYm+5NHOiHmkQ1eLmhC6U4T2vEX33FQ1vPoLFHqo6b9lDSX25GR1xXVabbn54oSMXknpQu7UxDnl1qmvqRw284jxx/6bTQ1KFcz08VPvwbGnm9UI5/YeY2/lFHbrQwTEGJ3TkeFdn1Ew9wsqDXkRyGpmBB1lpFcHbe3W1I2/tUInF8WfgpgB5ngdP9oNFm1Q7/SnG9YWz7CeqLoggKd0KebINI/t+LCsOnJfGJ2fxJNAYgzzbvVueeuaIzwLld0npVhgdafwHjN9RMXzRZ5sAAAAASUVORK5CYII=";
 }
 
 function _avtDetective() {

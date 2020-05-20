@@ -56,14 +56,14 @@ let ext = {
     getIntentTask: function (id) {
         return TimedTaskManager.getIntentTask(id);
     },
-    get removeIntentTask () {
+    get removeIntentTask() {
         return function (id) {
             if (!id && isNaN(+id)) return;
             let task = this.getIntentTask(id);
             return task && removeTask(task);
         };
     },
-    get removeTimedTask ()  {
+    get removeTimedTask() {
         return function (id) {
             if (!id && isNaN(+id)) return;
             let task = this.getTimedTask(id);
@@ -112,9 +112,8 @@ let ext = {
     },
 };
 
-module.exports = Object.assign({
-    load: () => Object.assign(global["timers"], ext),
-}, ext);
+module.exports = ext;
+module.exports.load = () => Object.assign(global["timers"], ext);
 
 // tool function(s) //
 
@@ -141,13 +140,13 @@ function parseDateTime(clazz, dateTime) {
 
 function addTask(task) {
     TimedTaskManager[is_pro ? "addTaskSync" : "addTask"](task);
-    waitForAction(() => task.id !== 0, 500, 80);
+    waitForAction(() => task.id !== 0, 840, 120);
 }
 
 function removeTask(task) {
     let id = task.id;
     TimedTaskManager[is_pro ? "removeTaskSync" : "removeTask"](task);
-    return waitForAction(() => !ext.getTimedTask(id), 500, 80);
+    return waitForAction(() => !ext.getTimedTask(id), 840, 120);
 }
 
 function updateTask(task) {
@@ -160,14 +159,14 @@ function updateTask(task) {
             if (!task || !task.id) return;
             let new_id = ext.getTimedTask(task.id).id;
             return new_id && new_id !== id;
-        }, 800, 50) && task;
+        }, 1.2e3, 120) && task;
     } catch (e) {
 
     }
 }
 
 function waitForAction(f, timeout_or_times, interval) {
-    let _timeout = timeout_or_times || 10000;
+    let _timeout = timeout_or_times || 10e3;
     let _interval = interval || 200;
     let _times = _timeout < 100 ? _timeout : ~~(_timeout / _interval) + 1;
 

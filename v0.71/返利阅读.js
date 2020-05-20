@@ -11,7 +11,7 @@ sleep(4500);
 click("去赚钱");
 toastLog("开始刷取60条返利阅读");
 sleep(1000);
-for (var i= 1; i<=22; i++)
+for (var i= 1; i<=23; i++)
 {
     Tap(245,450);
     sleep(98*1000);
