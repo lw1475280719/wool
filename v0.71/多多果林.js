@@ -11,9 +11,9 @@ click("种树收益(元)");
 sleep(1000);
 for(i=0;i<55;i++)
 {
-    click("观看100次视频");
+    click("13日连续登录");
     sleep(1000);
-    id("tv_item_withdraw_submit_list_2_button").find().click();
+   id("tv_item_withdraw_submit_list_2_button").find().click();
     sleep(31.5*1000);
     id("tt_video_ad_close_layout").find().click(); 
     sleep(3000);

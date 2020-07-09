@@ -3,13 +3,9 @@ var sh = new Shell(true);
 sleep(2500);
 click("跳过");
 sleep(1000);
-//click("我的");
-//sleep(2000);
 sleep(2500);
-//text("javascript:void(0);").find().click();
-//sleep(1000);
-click("签到赚钱");
-
+//click("签到赚钱");
+Tap(535,1010);
 sleep(4500);
 click("边看火山热门视频边赚钱");
 toastLog("开始刷取200条返利视频");

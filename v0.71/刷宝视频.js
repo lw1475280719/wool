@@ -1,4 +1,3 @@
-//var count=rawInput("请输入刷取总视频数");
 launchApp("刷宝短视频");
 var sh = new Shell(true);
 toast("开始2小时40分钟任务");
@@ -6,7 +5,7 @@ sleep(9500);
 Tap(500,800);
 sleep(1000);
 Tap(500,500);
-for (var i= 0; i<1000; i++) 
+for (var i= 0; i<1500; i++) 
 //for (var i= 0; i<300; i++) 
 {    
     sleep(1000);
