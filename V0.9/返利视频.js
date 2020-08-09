@@ -1,10 +1,11 @@
 launchApp("返利");
 var sh = new Shell(true);
-sleep(2500);
+sleep(3500);
 click("跳过");
-sleep(1000);
-sleep(2500);
+sleep(4000);
 //click("签到赚钱");
+back();
+sleep(1000);
 Tap(535,1010);
 sleep(4500);
 click("边看火山热门视频边赚钱");

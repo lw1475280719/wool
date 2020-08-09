@@ -2,9 +2,9 @@ launchApp("快音");
 var sh = new Shell(true);
 sleep(5000);
 click("视频");
-for (var i= 0; i<60; i++) 
+for (var i= 0; i<150; i++) 
 {    
-    sleep(25*1000);
+    sleep(10*1000);
     toastLog("翻页"+(i+1));
     Swipe(800, 1600, 800, 286, 666);
 }

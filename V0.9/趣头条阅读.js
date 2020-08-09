@@ -1,14 +1,12 @@
 //var count=rawInput("请输入阅读条数");
 launch(getPackageName("趣头条"));
 var sh = new Shell(true);
+sleep(11000);
+click("养生");
 sleep(4000);
-click("跳过广告");
-sleep(2500);
-click("科技");
-sleep(2500);
 swipe(500,320,500,1450,300);
-sleep(3000);
-for(i=0;i<390;i++)
+sleep(2000);
+for(i=0;i<200;i++)
 {
    Tap(500,380);
    for(k=0;k<8;k++)
@@ -24,7 +22,7 @@ sleep(1000);
    back();
    sleep(1600);
    swipe(500,320,500,1450,300);
-   sleep(1800);
+   sleep(3500);
 }
 sh.exec("am force-stop "+getPackageName("趣头条"));
 sleep(1000);
