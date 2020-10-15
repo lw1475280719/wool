@@ -1,4 +1,4 @@
-//耗时30分钟，收益：
+//耗时30分钟，收益约0.1元
 launch(getPackageName("福利头条"));
 var sh = new Shell(true);
 sleep(10*1000);
@@ -7,7 +7,7 @@ Tap(500,1207);
 sleep(2000);
 back();
 sleep(1000);
-click("养生");
+click("情感");
 sleep(2000);
 for(i=0;i<40;i++)
 {
@@ -20,6 +20,7 @@ for(i=0;i<40;i++)
      
    }
    Tap(911,666);
+   Tap(900,730);
    sleep(1000)
    back();
    //next------

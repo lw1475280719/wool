@@ -1,14 +1,13 @@
-//耗时30分钟，收益
+//耗时30分钟，收益0.2元
 launch(getPackageName("趣看天下"));
 var sh = new Shell(true);
-sleep(8000);
-// click("跳过广告");
-Tap(974,105)
-sleep(2000);
-id("img_close").find().click();
-sleep(2000);
-click("养生");
-sleep(2000);
+sleep(16000);
+Tap(500,800);
+sleep(1000);
+back();
+sleep(1000);
+Tap(625,235);
+sleep(1000);
 swipe(500,320,500,1450,300);
 sleep(4000);
 for(i=0;i<40;i++)
@@ -31,7 +30,7 @@ for(i=0;i<40;i++)
    sleep(1600);
    swipe(500,320,500,1450,300);
    toastLog("计数器："+(i+1));
-   sleep(3500);
+   sleep(4500);
    
 }
 sh.exec("am force-stop "+getPackageName("趣看天下"));

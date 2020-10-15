@@ -1,35 +1,21 @@
+//耗时2小时40分钟，收益约1元
 launchApp("刷宝短视频");
 var sh = new Shell(true);
-toast("开始2小时40分钟任务");
 sleep(5500);
 Tap(500,800);
 sleep(1000);
 Tap(800,1200);
-for (var i= 0; i<1000; i++) 
-//for (var i= 0; i<300; i++) 
+for (var i= 0; i<1010; i++)
 {    
-    sleep(1000);
-  //	if(i%6==0)
- // 	{
-   // toastLog("点赞"+(i/6+1));
-    //Tap(990,1100);
-  	//}
-//  if(i%30==0)
-  //{
- // sleep(1000);
- // }
- // 	if(i%10==0)
- // 	{
-   // toastLog("关注"+(i/10+1));
-  //text("关注").find().click();
- // 	}
-    sleep(3000);
-    back();
+    sleep(2000);
     toastLog("翻页"+(i+1));
     sleep(1000);
-    
+    Tap(100,233);
+    sleep(1000);
+    back();
+    sleep(1000);
     Swipe(800, 900, 800, 286, 336);
-    sleep(2000);
+    sleep(4000);
 }
 sh.exec("am force-stop "+getPackageName("刷宝短视频"));
 sleep(1000);

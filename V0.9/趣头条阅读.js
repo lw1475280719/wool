@@ -1,7 +1,9 @@
-//var count=rawInput("请输入阅读条数");
+//耗时2小时30分钟，收益0.3-1.2元
 launch(getPackageName("趣头条"));
 var sh = new Shell(true);
-sleep(11000);
+sleep(10000);
+swipe(500,800,500,350,300);
+sleep(1000);
 click("养生");
 sleep(4000);
 swipe(500,320,500,1450,300);

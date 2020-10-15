@@ -5,7 +5,9 @@ sleep(5000);
 Tap(982,146);
 sleep(2000);
 for(i=0;i<666;i++){
-    sleep(10*1000);
+    sleep(9*1000);
+    id("txt_coin_close").find().click();
+    sleep(1000);
     swipe(500,1600,500,350,600);
     toastLog("计数器："+(i+1));
 }

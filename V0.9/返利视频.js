@@ -1,3 +1,4 @@
+//耗时40分钟，收益约0.5元
 launchApp("返利");
 var sh = new Shell(true);
 sleep(3500);
@@ -5,8 +6,8 @@ click("跳过");
 sleep(4000);
 //click("签到赚钱");
 back();
-sleep(1000);
-Tap(535,1010);
+sleep(3000);
+Tap(900,120);
 sleep(4500);
 click("边看火山热门视频边赚钱");
 toastLog("开始刷取200条返利视频");

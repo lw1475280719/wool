@@ -1,12 +1,12 @@
-//耗时1小时20分钟
+//耗时1小时20分钟，收益0.3元
 launch(getPackageName("中青看点"));
 var sh = new Shell(true);
-sleep(4000);
+sleep(6000);
 Tap(1010,107);
 sleep(3000);
 back();
 sleep(2000);
-click("娱乐");
+click("健康");
 sleep(2000);
 for(i=0;i<120;i++){
     swipe(500,320,500,1450,300);
