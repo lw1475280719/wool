@@ -5,6 +5,7 @@ id("splash_skip").waitFor();
 id("splash_skip").find().click();
 sleep(2000);
 back();
+sleep(2000);
 Tap(540,1030);
 sleep(7000);
 back();
