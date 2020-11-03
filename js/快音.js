@@ -1,11 +1,12 @@
-//耗时30分钟，收益约0.1-0.2元
+//耗时30分钟
 launchApp("快音");
 var sh = new Shell(true);
-sleep(5000);
+text("首页").waitFor();
 click("首页");
- for(i=0;i<150;i++){
-     sleep(10*1000);
-     swipe(500,1600,500,250,600);
+ for(i=0;i<170;i++){  
+     sleep(2000); 
+     id("nextClick").find().click()
+     sleep(8*1000);
      }
 sh.exec("am force-stop "+getPackageName("快音"));
 sleep(1000);

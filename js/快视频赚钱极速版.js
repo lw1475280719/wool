@@ -1,10 +1,8 @@
-//耗时2小时
+//耗时30分钟
 launch(getPackageName("快视频赚钱极速版"));
 var sh = new Shell(true);
-sleep(5000);
-Tap(982,146);
-sleep(2000);
-for(i=0;i<666;i++){
+id("frag_my_page").waitFor();
+for(i=0;i<165;i++){
     sleep(9*1000);
     id("txt_coin_close").find().click();
     sleep(1000);
