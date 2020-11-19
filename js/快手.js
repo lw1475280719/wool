@@ -2,6 +2,7 @@
 launch(getPackageName("快手极速版"));
 var sh = new Shell(true);
 id("sidebar_top_area").waitFor();
+sleep(5000);
 Tap(500,800);
 for(i=0;i<1003;i++){
     swipe(500,1600,500,250,600);

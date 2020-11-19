@@ -1,12 +1,14 @@
 //耗时2小时30分钟
+
+
+
 launch(getPackageName("趣头条"));
 var sh = new Shell(true);
-id("pn").waitFor();
+sleep(9000); 
 id("pn").find().click();
-sleep(4000); 
-if(id("p").exists()){
-   id("p").find().click();
-}
+sleep(1000);
+id("lq").find().click();
+id("p").find().click();
 sleep(1000);
 click("养生");
 sleep(4000);
@@ -26,9 +28,6 @@ for(i=0;i<208;i++){
    sleep(1000);
    swipe(500,320,500,1000,300);
    sleep(3500);
-   if(id("lq").exists()){
-      id("lq").find().click();
-   }
 
 }
 sh.exec("am force-stop "+getPackageName("趣头条"));

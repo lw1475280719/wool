@@ -4,7 +4,7 @@ var sh = new Shell(true);
 sleep(13000);
 for(i=0;i<1;i++){
     sleep(1000);
-    click(540,1990);
+    click(540,1800);
 }
 for(i=0;i<288;i++){
  click("视频赚");

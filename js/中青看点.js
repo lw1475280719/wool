@@ -2,11 +2,12 @@
 launch(getPackageName("中青看点"));
 var sh = new Shell(true);
 text("推荐").waitFor();
-text("推荐").find().click();
-sleep(1000);
-click("健康");
 sleep(2000);
-for(i=0;i<120;i++){
+text("健康").find().click();
+sleep(3000);
+//id("nc").find().click();
+sleep(1000);
+for(i=0;i<116;i++){
     swipe(500,320,500,1450,300);
     sleep(2000);
     Tap(500,380);
@@ -14,8 +15,8 @@ for(i=0;i<120;i++){
         sleep(4000);
         swipe(800,1400,800,500,500);  
     }
-    id("my").find().click();
-    sleep(1000);
+    id("nw").find().click();
+    sleep(2000);
     toast("计数器"+(i+1));
 }
 sh.exec("am force-stop "+getPackageName("中青看点"));

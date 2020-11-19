@@ -1,17 +1,18 @@
 //耗时40分钟
+
 launchApp("返利");
 var sh = new Shell(true);
-id("splash_skip").waitFor();
+sleep(6000);
 id("splash_skip").find().click();
 sleep(2000);
 back();
 sleep(2000);
 Tap(540,1030);
 sleep(7000);
-back();
+
 sleep(1000);
 click("边看火山热门视频边赚钱");
-for (var i= 1; i<=205; i++)
+for (var i= 1; i<=210; i++)
 {
     sleep(10000);
     swipe(800,1600,800,286,666);
