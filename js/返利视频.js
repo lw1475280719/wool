@@ -7,19 +7,17 @@ id("splash_skip").find().click();
 sleep(2000);
 back();
 sleep(2000);
-Tap(540,1030);
-sleep(7000);
-
-sleep(1000);
-click("边看火山热门视频边赚钱");
-for (var i= 1; i<=210; i++)
-{
-    sleep(10000);
-    swipe(800,1600,800,286,666);
-    toastLog("当前进度："+i+"/205");
+Tap(540, 1030);
+desc("提现").clickable(true).depth(12).waitFor();
+sleep(3000);
+text("边看火山热门视频边赚钱").findOne().parent().click();
+for (var i = 1; i <= 210; i++) {
+    sleep(10 * 1000);
+    swipe(800, 1600, 800, 286, 666);
+    toastLog("当前进度：" + i + "/205");
 }
 
-sh.exec("am force-stop "+getPackageName("返利"));
+sh.exec("am force-stop " + getPackageName("返利"));
 sleep(1000);
 sh.exit;
 toastLog("【返利视频】已完成计划任务并退出APP！");

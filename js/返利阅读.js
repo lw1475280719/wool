@@ -7,22 +7,21 @@ id("splash_skip").find().click();
 sleep(2000);
 back();
 sleep(2000);
-Tap(540,1030);
-sleep(7000);
-
-sleep(1000);
-click("去赚钱");
+Tap(540, 1030);
+desc("提现").clickable(true).depth(12).waitFor();
+sleep(3000);
+desc("去赚钱").findOne().click();
 sleep(5000);
-for (var i= 1; i<=25; i++){
-    Tap(245,450);
-    sleep(85*1000);
+for (var i = 1; i <= 34; i++) {
+    Tap(245, 450);
+    sleep(65 * 1000);
     back();
     sleep(1000);
-    swipe(800,450,800,1450,666);
-    sleep(5000);
-    toastLog("当前进度："+i*3+"/60");
+    swipe(800, 450, 800, 1450, 666);
+    sleep(3000);
+    toastLog("当前进度：" + i * 2 + "/60");
 }
-sh.exec("am force-stop "+getPackageName("返利"));
+sh.exec("am force-stop " + getPackageName("返利"));
 sleep(1000);
 sh.exit;
 toastLog("【返利阅读】已完成计划任务并退出APP！");
