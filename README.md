@@ -15,4 +15,4 @@
 ![avatar](https://github.com/jiemo9527/wool/blob/master/xunge.jpeg?raw=true)
 
 <hr>
-[一个薅羊毛分享平台](http://jie-getmao.top)
+一个薅羊毛分享平台   http://jie-getmao.top
