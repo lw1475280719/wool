@@ -1,11 +1,11 @@
-//耗时1小时30分钟
+//耗时30分钟
 launch(getPackageName("趣赚清理"));
 var sh = new Shell(true);
 id("ta").waitFor();
 sleep(1000);
 click("小视频");
 sleep(2000);
-for (i = 1; i < 500; i++) {
+for (i = 1; i < 160; i++) {
     toast("计数器:" + i);
     sleep(8000);
     Tap(900, 1600);

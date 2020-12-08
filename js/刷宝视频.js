@@ -1,11 +1,11 @@
-//耗时2小时40分钟
+//耗时1小时30分钟
 launchApp("刷宝短视频");
 var sh = new Shell(true);
 id("cancel").waitFor();
 id("cancel").find().click();
 sleep(2000);
 Tap(800, 1200);
-for (var i = 0; i < 1020; i++) {
+for (var i = 0; i < 570; i++) {
     id("iv_close").find().click();
     sleep(6000);
     //Tap(100,233);

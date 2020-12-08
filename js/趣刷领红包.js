@@ -1,8 +1,8 @@
-//耗时30分钟
+//耗时15分钟
 launch(getPackageName("趣刷领红包"));
 var sh = new Shell(true);
 id("frag_my_page").waitFor();
-for (i = 0; i < 165; i++) {
+for (i = 0; i < 70; i++) {
     swipe(500, 1600, 500, 350, 600);
     sleep(9 * 1000);
     id("txt_coin_close").find().click();

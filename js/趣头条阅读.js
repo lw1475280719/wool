@@ -1,10 +1,9 @@
-//耗时2小时30分钟
-
+//耗时1小时
 
 launch(getPackageName("趣头条"));
 var sh = new Shell(true);
 sleep(9000);
-id("pn").find().click();
+id("afk").find().click();
 sleep(1000);
 id("lq").find().click();
 id("p").find().click();
@@ -13,7 +12,7 @@ click("养生");
 sleep(4000);
 swipe(500, 320, 500, 1500, 300);
 sleep(2000);
-for (i = 0; i < 208; i++) {
+for (i = 0; i < 82; i++) {
     Tap(500, 380);
     for (k = 0; k < 8; k++) {
         sleep(4000);
