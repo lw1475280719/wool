@@ -8,7 +8,7 @@ sleep(2000);
 Tap(500, 500);
 for (i = 1; i < 110; i++) {
     sleep(15 * 1000);
-    Tap(900, 1500);
+    Tap(900, 1650);
     sleep(1000);
     id("mh").find().click();
     id("ah2").find().click();

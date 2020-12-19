@@ -15,7 +15,7 @@ sleep(5000);
 for (var i = 1; i <= 34; i++) {
     Tap(245, 450);
     sleep(65 * 1000);
-    back();
+    id("iv_left").find().click();
     sleep(1000);
     swipe(800, 450, 800, 1450, 666);
     sleep(3000);

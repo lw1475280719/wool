@@ -12,7 +12,7 @@ desc("提现").clickable(true).depth(12).waitFor();
 sleep(3000);
 text("边看火山热门视频边赚钱").findOne().parent().click();
 for (var i = 1; i <= 210; i++) {
-    sleep(10 * 1000);
+    sleep(10* 1000);
     swipe(800, 1600, 800, 286, 666);
     toastLog("当前进度：" + i + "/210");
 }

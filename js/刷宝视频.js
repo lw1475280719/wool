@@ -8,9 +8,9 @@ Tap(800, 1200);
 for (var i = 0; i < 570; i++) {
     id("iv_close").find().click();
     sleep(6000);
-    //Tap(100,233);
+    //Tap(100, 233);
     sleep(2000);
-    // back();
+    //back();
     sleep(1000);
     toastLog("计数器：" + (i + 1));
     Swipe(800, 900, 800, 286, 300);

@@ -1,4 +1,4 @@
-//耗时1小时
+//耗时1小时20分钟
 launch(getPackageName("中青看点"));
 var sh = new Shell(true);
 //text("推荐").waitFor();
@@ -7,7 +7,7 @@ id("oa").find().click();
 sleep(2000);
 text("健康").find().click();
 sleep(3000);
-for (i = 0; i < 85; i++) {
+for (i = 0; i < 115; i++) {
     swipe(500, 320, 500, 1450, 300);
     sleep(2000);
     Tap(500, 380);
