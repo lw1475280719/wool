@@ -1,4 +1,4 @@
-//耗时30分钟
+//耗时20分钟
 for(i=0;i<2;i++){
     home();
     sleep(1000); 
@@ -8,7 +8,7 @@ text("友趣vlog").find().click();
 id("d9").waitFor();
 sleep(4000);
 toastLog("start");
-for (i = 1; i < 208; i++) {
+for (i = 1; i < 120; i++) {
     if (i % 6 != 0) {
         toastLog("计数器：" + i);
         sleep(4000);

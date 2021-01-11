@@ -1,3 +1,4 @@
+//封号了，不再更新
 //耗时1小时20分钟
 launch(getPackageName("中青看点"));
 var sh = new Shell(true);
