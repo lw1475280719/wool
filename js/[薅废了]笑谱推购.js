@@ -1,4 +1,4 @@
-//薅废了，耗时1小时
+//耗时1小时
 launch(getPackageName("笑谱推购"));
 var sh = new Shell(true);
 className("androidx.appcompat.app.ActionBar$Tab").clickable(true).selected(true).depth(12).waitFor();
