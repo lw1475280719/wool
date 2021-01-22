@@ -2,7 +2,7 @@
 launch(getPackageName("零钱宝贝"));
 var sh = new Shell(true);
 text("我的钱包").waitFor();
-sleep(2000);
+sleep(3000);
 text("领取").find().click();
 for (i = 0; i < 70; i++) {
     id("tt_video_ad_close_layout").findOne().click();  
@@ -11,7 +11,7 @@ for (i = 0; i < 70; i++) {
     sleep(2000);    
     if(text("立即提现").exists()){
         Tap(540,1800);//Tap(540,1680);
-        sleep(1000);
+        sleep(2000);
         text("领取").find().click();
     }
     toastLog("计数器：" + (i + 1)+"/63");
