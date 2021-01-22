@@ -5,16 +5,16 @@ text("我的钱包").waitFor();
 sleep(3000);
 text("领取").find().click();
 for (i = 0; i < 70; i++) {
-    id("tt_video_ad_close_layout").findOne().click();  
-    sleep(8000);   
+    id("tt_video_ad_close_layout").findOne().click();
+    sleep(8000);
     clickable(true).depth(15).find().click();
-    sleep(2000);    
-    if(text("立即提现").exists()){
-        Tap(540,1800);//Tap(540,1680);
+    sleep(2000);
+    if (text("立即提现").exists()) {
+        Tap(540, 1800);//Tap(540,1680);
         sleep(2000);
         text("领取").find().click();
     }
-    toastLog("计数器：" + (i + 1)+"/63");
+    toastLog("计数器：" + (i + 1) + "/63");
 }
 sh.exec("am force-stop " + getPackageName("零钱宝贝"));
 sleep(1000);
