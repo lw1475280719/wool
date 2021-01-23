@@ -11,7 +11,7 @@ Tap(540, 1030);
 desc("提现").clickable(true).depth(12).waitFor();
 text("领取400金币").find().click();
 sleep(1000);
-Tap(200, 1900);
+Tap(200, 1600);
 for (var i = 1; i <= 210; i++) {
     sleep(10 * 1000);
     swipe(800, 1600, 800, 286, 666);
