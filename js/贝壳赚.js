@@ -11,7 +11,7 @@ if (text("立即提现").exists()) {
 sleep(1000);
 text("0.3").findOne().parent().parent().click();
 sleep(1000);
-for (i = 0; i < 300; i++) {
+for (i = 0; i < 220; i++) {
     text("看视频提现秒到账").find().click();
     sleep(5000);
     if (className("android.widget.ImageView").exists()) {
@@ -44,7 +44,7 @@ for (j = 0; j < 250; j++) {
         id("tt_video_ad_close_layout").find().click();
     }
     sleep(1000);
-    toastLog("计数器：" + (j + 300));
+    toastLog("计数器：" + (j + 220));
 }
 
 
