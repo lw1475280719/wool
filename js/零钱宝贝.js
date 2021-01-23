@@ -16,7 +16,7 @@ for (i = 0; i < 350; i++) {
         text("领取").find().click();
     }
     text("领取").find().click();
-    toastLog("计数器：" + (i + 1) + "/63");
+    toastLog("计数器：" + (i + 1) + "/350");
 }
 sh.exec("am force-stop " + getPackageName("零钱宝贝"));
 sleep(1000);
