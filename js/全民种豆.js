@@ -1,9 +1,9 @@
-//耗时40分钟
+//耗时20分钟
 launch(getPackageName("全民种豆"));
 var sh = new Shell(true);
 id("iv_shuoming").waitFor();
 sleep(2000);
-for (i = 0; i < 290; i++) {
+for (i = 0; i < 140; i++) {
     id("iv_yijian").find().click();
     sleep(3000);
     id("btn_submit").find().click();
