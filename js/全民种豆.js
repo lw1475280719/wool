@@ -3,21 +3,21 @@ launch(getPackageName("全民种豆"));
 var sh = new Shell(true);
 id("iv_shuoming").waitFor();
 sleep(2000);
-for(i=0;i<290;i++){
+for (i = 0; i < 290; i++) {
     id("iv_yijian").find().click();
     sleep(3000);
     id("btn_submit").find().click();
     sleep(3000);
-    if(id("tt_video_ad_close_layout").exists()){
+    if (id("tt_video_ad_close_layout").exists()) {
         id("tt_video_ad_close_layout").find().click();
     }
-    if(className("android.widget.ImageView").exists()){
+    if (className("android.widget.ImageView").exists()) {
         back();
     }
-    if(id("iv_shuoming").exists()){
-        sleep(10*1000);
+    if (id("iv_shuoming").exists()) {
+        sleep(10 * 1000);
     }
-    toastLog("计数器："+(i+1));
+    toastLog("计数器：" + (i + 1));
 }
 
 
