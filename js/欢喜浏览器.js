@@ -3,7 +3,7 @@ launch(getPackageName("欢喜浏览器"));
 var sh = new Shell(true);
 sleep(13 * 1000);
 id("im_hide").find().click();
-id("tt_insert_dislike_icon_img").find().click()
+id("tt_insert_dislike_icon_img").find().click();
 for (i = 0; i < 110; i++) {
     sleep(10 * 1000);
     if (id("im_hide").exists()) {
