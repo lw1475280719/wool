@@ -8,10 +8,10 @@ for (i = 0; i < 290; i++) {
     sleep(3000);
     id("btn_submit").find().click();
     sleep(3000);
-    if (id("tt_video_ad_close_layout").exists()) {
+    if (!id("iv_shuoming").exists()) {
         id("tt_video_ad_close_layout").find().click();
     }
-    if (className("android.widget.ImageView").exists()) {
+    if (!id("iv_shuoming").exists()) {
         back();
     }
     if (id("iv_shuoming").exists()) {
