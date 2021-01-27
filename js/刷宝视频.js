@@ -1,11 +1,11 @@
 //耗时1小时30分钟
 launchApp("刷宝短视频");
 var sh = new Shell(true);
-// sleep(10*1000);
-// home();
-// launchApp("刷宝短视频");
-// sleep(8000);
-// className("android.widget.ImageButton").find().click();
+sleep(10*1000);
+home();
+launchApp("刷宝短视频");
+sleep(8000);
+className("android.widget.ImageButton").find().click();
 id("cancel").waitFor();
 id("cancel").find().click();
 sleep(2000);
