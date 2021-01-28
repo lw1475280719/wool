@@ -5,7 +5,7 @@ id("iv_shuoming").waitFor();
 sleep(2000);
 for (i = 0; i < 140; i++) {
     id("iv_yijian").find().click();
-    sleep(3000);
+    sleep(3500);
     id("btn_submit").find().click();
     sleep(3000);
     if (!id("iv_shuoming").exists()) {
