@@ -4,6 +4,17 @@ var sh = new Shell(true);
 text("我的钱包").waitFor();
 text("我的钱包").find().click();
 sleep(3000);
+// text("领取").find().click();
+// for (i = 0; i < 350; i++) {
+//     back();
+//     id("tt_video_ad_close_layout").find().click();
+//     sleep(6500);
+//     clickable(true).depth(15).find().click();
+//     sleep(1000);
+//     if (text("立即提现").exists()) {
+//         Tap(540, 1800);//Tap(540,1680);
+//         sleep(1000);
+//         text("领取").find().click();
 text("立即提现").find().click();
 sleep(2000);
 for (i = 0; i < 1400; i++) {
