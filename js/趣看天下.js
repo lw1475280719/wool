@@ -1,8 +1,9 @@
 //耗时30分钟，收益
 launch(getPackageName("趣看天下"));
 var sh = new Shell(true);
-id("splash_skip_view").findOne().click();
-id("img_close").findOne().click();
+sleep(12000);
+id("splash_skip_view").find().click();
+id("img_close").find().click();
 sleep(1000);
 text("养生").find().click();
 sleep(1000);
