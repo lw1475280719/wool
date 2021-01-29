@@ -18,6 +18,8 @@ for (i = 0; i < 280; i++) {
     if (className("android.widget.ImageView").exists()) {
         back();
     }
+    //防互动广告
+    swipe(100, 500, 800, 500, 300);
     if (id("tt_video_ad_close_layout").exists()) {
         id("tt_video_ad_close_layout").find().click();
     }
@@ -29,6 +31,8 @@ sleep(50 * 1000);
 if (className("android.widget.ImageView").exists()) {
     back();
 }
+//防互动广告
+swipe(100, 500, 800, 500, 300);
 if (id("tt_video_ad_close_layout").exists()) {
     id("tt_video_ad_close_layout").find().click();
 }

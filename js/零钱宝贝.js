@@ -25,6 +25,8 @@ for (i = 0; i < 1400; i++) {
     if(id("tt_video_ad_close_layout").exists()){
         id("tt_video_ad_close_layout").find().click();
     }
+    //防互动广告
+    swipe(100, 500, 800, 500, 300);
     if (className("android.widget.ImageView").exists()) {
         back();
     }
