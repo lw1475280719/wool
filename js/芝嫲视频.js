@@ -19,7 +19,7 @@ for (i = 0; i < 140; i++) {
         back();
     }
     if (id("iv_play_rule").exists()) {
-        sleep(10 * 1000);
+        sleep(5000);
     }
     toastLog("计数器：" + (i + 1));
 }
