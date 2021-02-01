@@ -1,5 +1,5 @@
 //耗时30分钟
-launch(getPackageName("贝壳赚"));
+launch("com.book.fiction");
 var sh = new Shell(true);
 sleep(10 * 1000);
 if (text("立即提现").exists()) {
@@ -38,22 +38,8 @@ if (id("tt_video_ad_close_layout").exists()) {
 }
 sleep(1000);
 back();
-// for (j = 0; j < 220; j++) {
-//     // clickable(true).depth(13).find().click();
-//     click("收益加速");
-//     sleep(5000);
-//     if (className("android.widget.ImageView").exists()) {
-//         back();
-//     }
-//     if (id("tt_video_ad_close_layout").exists()) {
-//         id("tt_video_ad_close_layout").find().click();
-//     }
-//     sleep(1000);
-//     toastLog("计数器：" + (j + 220));
-// }
 
-
-sh.exec("am force-stop " + getPackageName("贝壳赚"));
+sh.exec("am force-stop com.book.fiction");
 sleep(1000);
 sh.exit;
-toastLog("【贝壳赚】已完成计划任务并退出APP！");
+toastLog("【贝壳赚05】已完成计划任务并退出APP！");
