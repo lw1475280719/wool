@@ -1,13 +1,13 @@
 //耗时20分钟
-for(i=0;i<2;i++){
+for (i = 0; i < 2; i++) {
     home();
-    sleep(1000); 
+    sleep(1000);
 }
 text("友趣vlog").waitFor();
 text("友趣vlog").find().click();
 id("dy").waitFor();
-sleep(4000);
-Tap(950,400);
+sleep(6000);
+Tap(950, 400);
 toastLog("start");
 for (i = 1; i < 120; i++) {
     if (i % 6 != 0) {

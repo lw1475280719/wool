@@ -1,7 +1,7 @@
 //耗时1小时30分钟
 launchApp("刷宝短视频");
 var sh = new Shell(true);
-sleep(10*1000);
+sleep(10 * 1000);
 home();
 launchApp("刷宝短视频");
 sleep(8000);

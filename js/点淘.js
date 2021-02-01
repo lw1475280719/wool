@@ -6,7 +6,7 @@ Tap(700, 200);
 sleep(2000);
 for (i = 0; i < 222; i++) {
     sleep(15 * 1000);
-    swipe(500, 1600, 500, 250, 500);   
+    swipe(500, 1600, 500, 250, 500);
     toastLog("计数器：" + (i + 1));
 }
 sh.exec("am force-stop " + getPackageName("点淘"));

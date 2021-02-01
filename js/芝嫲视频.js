@@ -2,7 +2,7 @@
 launch(getPackageName("芝嫲视频"));
 var sh = new Shell(true);
 id("check_btn").waitFor();
-Tap(500,500);
+Tap(500, 500);
 id("tab_tv").className("android.widget.TextView").text("夺宝").findOne().parent().parent().click();
 sleep(2000);
 for (i = 0; i < 140; i++) {
