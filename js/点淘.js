@@ -2,7 +2,7 @@
 launch(getPackageName("点淘"));
 var sh = new Shell(true);
 className("android.widget.RelativeLayout").clickable(true).selected(true).waitFor();
-Tap(700, 200);
+Tap(700, 150);
 sleep(2000);
 for (i = 0; i < 225; i++) {
     sleep(15 * 1000);
