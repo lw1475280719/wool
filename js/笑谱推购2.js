@@ -1,4 +1,4 @@
-//耗时15分钟（尽量在晚上运行，直播多）
+//耗时15分钟：刷直播（尽量在晚上运行，直播多）
 launch(getPackageName("笑谱推购"));
 var sh = new Shell(true);
 className("androidx.appcompat.app.ActionBar$Tab").clickable(true).selected(true).depth(12).waitFor();
