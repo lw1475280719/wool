@@ -42,4 +42,4 @@ back();
 sh.exec("am force-stop com.kaka.kakavideo");
 sleep(1000);
 sh.exit;
-toastLog("【贝壳赚08】已完成计划任务并退出APP！");
+toastLog("【贝壳赚10】已完成计划任务并退出APP！");
