@@ -3,7 +3,7 @@ launch(getPackageName("趣查天气"));
 var sh = new Shell(true);
 id("ana").waitFor();
 sleep(1000);
-id("ajd").className("android.widget.TextView").text("看视频").findOne().parent().click();
+id("aph").className("android.widget.TextView").text("小视频").find().parent().click()
 sleep(2000);
 Tap(500, 500);
 for (i = 1; i < 110; i++) {
@@ -12,6 +12,7 @@ for (i = 1; i < 110; i++) {
     sleep(1000);
     id("mh").find().click();
     id("ah2").find().click();
+    swipe(500, 1600, 500, 250, 600);
 
 }
 

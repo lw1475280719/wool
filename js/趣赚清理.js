@@ -10,7 +10,7 @@ for (i = 1; i < 160; i++) {
     sleep(8000);
     Tap(900, 1650);
     sleep(1000);
-    id("alf").find().click();
+    id("ao0").find().click();
     id("ll").find().click();
 
     sleep(1000);
