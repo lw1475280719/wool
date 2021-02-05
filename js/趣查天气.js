@@ -8,10 +8,11 @@ sleep(2000);
 for (i = 1; i < 110; i++) {
     sleep(15 * 1000);
     Tap(900, 1650);
-    sleep(1000);
+    sleep(500);
     id("m5").find().click();
     id("an6").find().click();
-    swipe(500, 1600, 500, 250, 600);
+    sleep(500);
+    swipe(500, 1800, 500, 250, 600);
 
 }
 
