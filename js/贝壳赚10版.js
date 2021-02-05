@@ -1,5 +1,5 @@
 //耗时30分钟
-launch("com.daniayuso.free.books");
+launch("com.kaka.kakavideo");
 var sh = new Shell(true);
 sleep(10 * 1000);
 if (text("立即提现").exists()) {
@@ -39,7 +39,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop com.daniayuso.free.books");
+sh.exec("am force-stop com.kaka.kakavideo");
 sleep(1000);
 sh.exit;
 toastLog("【贝壳赚08】已完成计划任务并退出APP！");
