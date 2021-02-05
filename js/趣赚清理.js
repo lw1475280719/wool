@@ -11,7 +11,7 @@ for (i = 1; i < 160; i++) {
     Tap(900, 1650);
     sleep(1000);
     id("ao0").find().click();
-    id("ll").find().click();
+    id("lw").find().click();
 
     sleep(1000);
     swipe(800, 1600, 800, 266, 500);
