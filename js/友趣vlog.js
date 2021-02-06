@@ -1,4 +1,4 @@
-//耗时20分钟
+//耗时30分钟
 for (i = 0; i < 2; i++) {
     home();
     sleep(1000);
@@ -9,7 +9,7 @@ id("dy").waitFor();
 sleep(6000);
 Tap(950, 400);
 toastLog("start");
-for (i = 1; i < 120; i++) {
+for (i = 1; i < 200; i++) {
     if (i % 6 != 0) {
         toastLog("计数器：" + i);
         sleep(4000);
