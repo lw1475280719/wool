@@ -7,7 +7,7 @@ id("tab_tv").className("android.widget.TextView").text("夺宝").findOne().paren
 sleep(2000);
 for (i = 0; i < 140; i++) {
     id("iv_onkey_receive").find().click()
-    sleep(1000);
+    sleep(300);
     id("rtv_receive").find().click()
     sleep(5000);
     if (!id("iv_play_rule").exists()) {
