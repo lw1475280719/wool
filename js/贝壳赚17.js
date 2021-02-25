@@ -1,5 +1,5 @@
 //耗时30分钟
-launch("com.rwaltersapps.calculator2");
+launch("simple.batttery.alarm");
 var sh = new Shell(true);
 sleep(10 * 1000);
 if (text("立即提现").exists()) {
@@ -39,7 +39,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop com.rwaltersapps.calculator2");
+sh.exec("am force-stop simple.batttery.alarm");
 sleep(1000);
 sh.exit;
-toastLog("【贝壳赚13】已完成计划任务并退出APP！");
+toastLog("【贝壳赚17】已完成计划任务并退出APP！");

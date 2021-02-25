@@ -1,11 +1,12 @@
 //耗时30分钟
-launch("com.lalatoon.android");
+launch("com.bigfish_061");
 var sh = new Shell(true);
 sleep(10 * 1000);
 if (text("立即提现").exists()) {
-    className("android.view.View").text("立即提现").findOne().click();
+    text("立即提现").waitFor();
+    className("android.view.View").text("立即提现").find().click();
 } else {
-    className("android.widget.Image").text("icon_redpacked").findOne().parent().parent().click();
+    text("IKhfxJ5bxI9dDEfXvNwMfSu+J55SRfkPX+AphjYQHXRxYfAAAAAElFTkSuQmCC").findOne().parent().click();
 }
 sleep(1000);
 text("0.3").findOne().parent().parent().click();
@@ -38,7 +39,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop com.lalatoon.android");
+sh.exec("am force-stop com.bigfish_061");
 sleep(1000);
 sh.exit;
-toastLog("【壁纸试客02】已完成计划任务并退出APP！");
+toastLog("【贝壳赚14】已完成计划任务并退出APP！");

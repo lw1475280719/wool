@@ -1,5 +1,5 @@
 //耗时30分钟
-launch("de.alldownloader.freedownloader.video.downloader.newapp");
+launch("me.tastebuds.cooking.vegan");
 var sh = new Shell(true);
 sleep(10 * 1000);
 if (text("立即提现").exists()) {
@@ -39,7 +39,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop de.alldownloader.freedownloader.video.downloader.newapp");
+sh.exec("am force-stop me.tastebuds.cooking.vegan");
 sleep(1000);
 sh.exit;
-toastLog("【贝壳赚09】已完成计划任务并退出APP！");
+toastLog("【贝壳赚16】已完成计划任务并退出APP！");

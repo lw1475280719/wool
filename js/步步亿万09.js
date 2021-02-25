@@ -1,12 +1,11 @@
 //耗时30分钟
-launch("com.mobius88.icartoon");
+launch("com.ushaqi.zhuishushenqi.play");
 var sh = new Shell(true);
 sleep(10 * 1000);
-if (text("立即提现").exists()) {
-    text("立即提现").waitFor();
-    className("android.view.View").text("立即提现").find().click();
+if (text("立即提现").clickable(true).depth(14).exists()) {
+    text("立即提现").clickable(true).depth(14).find().click();
 } else {
-    text("IKhfxJ5bxI9dDEfXvNwMfSu+J55SRfkPX+AphjYQHXRxYfAAAAAElFTkSuQmCC").findOne().parent().click();
+    className("android.view.View").text("立即提现").find().click();
 }
 sleep(1000);
 text("0.3").findOne().parent().parent().click();
@@ -39,7 +38,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop com.mobius88.icartoon");
+sh.exec("am force-stop com.ushaqi.zhuishushenqi.play");
 sleep(1000);
 sh.exit;
-toastLog("【贝壳赚12】已完成计划任务并退出APP！");
+toastLog("【步步亿万09】已完成计划任务并退出APP！");
