@@ -13,7 +13,7 @@ for (i = 1; i < 160; i++) {
     id("ao0").find().click();
     id("lw").find().click();
     sleep(1000);
-    swipe(800, 1600, 800, 266, 500);
+    swipe(500, 1600, 500, 266, 500);
 
 }
 
