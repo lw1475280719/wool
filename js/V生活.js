@@ -7,12 +7,13 @@ sleep(1000);
 for (i = 0; i < 240; i++) {
     click("视频赚");
     sleep(4000);
-    //className("android.widget.ImageView").find().click();
     back();
     sleep(1000);
     id("tt_video_ad_close_layout").find().click();
+    id("reward_ad_close").find().click();
+    id("cancle").find().click();
     sleep(1000);
-    text("下次再说").find().click();
+    text("关闭").find().click();
     toastLog("计数器：" + (i + 1));
     sleep(1000);
 
