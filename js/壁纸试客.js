@@ -45,6 +45,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 }
 sleep(1000);
 back();
+
 sh.exec("am force-stop " + lapp);
 sleep(1000);
 sh.exit;
