@@ -1,12 +1,24 @@
 //耗时30分钟
-launch("com.ikeyboard.theme.blue.keyboard");
+dic={
+    11:"com.booster.battery.cooler.cleaner",
+    12:"com.en.midainc.dcjwys",
+    13:"com.mp.doctors.batterysaver",
+    14:"all.documents.reader.office.viewer.documentsmanager",
+    15:"com.volumebooster.soundbooster.booster.bassbooster.equalizer.musicequalizer",
+    16:"com.jixiang.timermaster",
+    19:"com.homefitapps.watertracker.reminder",
+    20:"org.adfoxhuang.whattoeat",
+}
+
+lapp=dic[dialogs.input("请输入步步亿万版号：")];
+
+launch(lapp);
 var sh = new Shell(true);
 sleep(10 * 1000);
-if (text("立即提现").exists()) {
-    text("立即提现").waitFor();
-    className("android.view.View").text("立即提现").find().click();
+if (text("立即提现").clickable(true).depth(14).exists()) {
+    text("立即提现").clickable(true).depth(14).find().click();
 } else {
-    text("IKhfxJ5bxI9dDEfXvNwMfSu+J55SRfkPX+AphjYQHXRxYfAAAAAElFTkSuQmCC").findOne().parent().click();
+    className("android.view.View").text("立即提现").find().click();
 }
 sleep(1000);
 text("0.3").findOne().parent().parent().click();
@@ -39,7 +51,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop com.ikeyboard.theme.blue.keyboard");
+sh.exec("am force-stop "+lapp);
 sleep(1000);
 sh.exit;
-toastLog("【贝壳赚18】已完成计划任务并退出APP！");
+toastLog("【步步亿万】已完成计划任务并退出APP！");

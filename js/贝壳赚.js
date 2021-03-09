@@ -1,11 +1,22 @@
 //耗时30分钟
-launch("com.mp.doctors.batterysaver");
+dic={
+    19:"dev.MakPersonalStudio.AlarmClock",
+    20:"techbash.com.texttospeech.translate.voicetype",
+    21:"dev.shahzadshah.speach.totext.app",
+    24:"voice.to.text",
+    28:"com.pinj_app",
+}
+
+
+lapp=dic[dialogs.input("请输入贝壳赚版号：")];
+launch(lapp);
 var sh = new Shell(true);
 sleep(10 * 1000);
-if (text("立即提现").clickable(true).depth(14).exists()) {
-    text("立即提现").clickable(true).depth(14).find().click();
-} else {
+if (text("立即提现").exists()) {
+    text("立即提现").waitFor();
     className("android.view.View").text("立即提现").find().click();
+} else {
+    text("IKhfxJ5bxI9dDEfXvNwMfSu+J55SRfkPX+AphjYQHXRxYfAAAAAElFTkSuQmCC").findOne().parent().click();
 }
 sleep(1000);
 text("0.3").findOne().parent().parent().click();
@@ -38,7 +49,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop com.mp.doctors.batterysaver");
+sh.exec("am force-stop "+lapp);
 sleep(1000);
 sh.exit;
-toastLog("【步步亿万13】已完成计划任务并退出APP！");
+toastLog("【贝壳赚】已完成计划任务并退出APP！");

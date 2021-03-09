@@ -1,11 +1,19 @@
 //耗时30分钟
-launch("com.en.midainc.dcjwys");
+dic={
+    5:"com.fastcharger.fast2021",
+    6:"com.repairdamagedcellphonebatteries.LimaLustini",
+    8:"com.friendsnotes",
+    9:"com.de.oster.alexander.apps.meetingmeter",
+}
+
+lapp=dic[dialogs.input("请输入壁纸试客版号：")];
+launch(lapp);
 var sh = new Shell(true);
 sleep(10 * 1000);
-if (text("立即提现").clickable(true).depth(14).exists()) {
-    text("立即提现").clickable(true).depth(14).find().click();
+if (text("立即提现").exists()) {
+    className("android.view.View").text("立即提现").findOne().click();
 } else {
-    className("android.view.View").text("立即提现").find().click();
+    className("android.widget.Image").text("icon_redpacked").findOne().parent().parent().click();
 }
 sleep(1000);
 text("0.3").findOne().parent().parent().click();
@@ -38,7 +46,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop com.en.midainc.dcjwys");
+sh.exec("am force-stop "+lapp);
 sleep(1000);
 sh.exit;
-toastLog("【步步亿万12】已完成计划任务并退出APP！");
+toastLog("【壁纸试客】已完成计划任务并退出APP！");
