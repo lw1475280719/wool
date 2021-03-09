@@ -1,12 +1,12 @@
 //耗时30分钟
-dic={
-    5:"com.fastcharger.fast2021",
-    6:"com.repairdamagedcellphonebatteries.LimaLustini",
-    8:"com.friendsnotes",
-    9:"com.de.oster.alexander.apps.meetingmeter",
+dic = {
+    5: "com.fastcharger.fast2021",
+    6: "com.repairdamagedcellphonebatteries.LimaLustini",
+    8: "com.friendsnotes",
+    9: "com.de.oster.alexander.apps.meetingmeter",
 }
 
-lapp=dic[dialogs.input("请输入壁纸试客版号：")];
+lapp = dic[dialogs.input("请输入壁纸试客版号：")];
 launch(lapp);
 var sh = new Shell(true);
 sleep(10 * 1000);
@@ -46,7 +46,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop "+lapp);
+sh.exec("am force-stop " + lapp);
 sleep(1000);
 sh.exit;
 toastLog("【壁纸试客】已完成计划任务并退出APP！");

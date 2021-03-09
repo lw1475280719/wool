@@ -1,14 +1,14 @@
 //耗时30分钟
-dic={
-    19:"dev.MakPersonalStudio.AlarmClock",
-    20:"techbash.com.texttospeech.translate.voicetype",
-    21:"dev.shahzadshah.speach.totext.app",
-    24:"voice.to.text",
-    28:"com.pinj_app",
+dic = {
+    19: "dev.MakPersonalStudio.AlarmClock",
+    20: "techbash.com.texttospeech.translate.voicetype",
+    21: "dev.shahzadshah.speach.totext.app",
+    24: "voice.to.text",
+    28: "com.pinj_app",
 }
 
 
-lapp=dic[dialogs.input("请输入贝壳赚版号：")];
+lapp = dic[dialogs.input("请输入贝壳赚版号：")];
 launch(lapp);
 var sh = new Shell(true);
 sleep(10 * 1000);
@@ -49,7 +49,7 @@ if (id("tt_video_ad_close_layout").exists()) {
 sleep(1000);
 back();
 
-sh.exec("am force-stop "+lapp);
+sh.exec("am force-stop " + lapp);
 sleep(1000);
 sh.exit;
 toastLog("【贝壳赚】已完成计划任务并退出APP！");
