@@ -1,11 +1,9 @@
 //耗时30分钟，收益
 launch(getPackageName("趣看天下"));
 var sh = new Shell(true);
-sleep(12000);
-id("splash_skip_view").find().click();
-id("img_close").find().click();
+className("android.widget.TextView").text("娱乐").waitFor();
 sleep(1000);
-text("养生").find().click();
+text("娱乐").find().click();
 sleep(1000);
 for (i = 0; i < 40; i++) {
     sleep(1000);
