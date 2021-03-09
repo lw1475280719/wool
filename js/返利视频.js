@@ -1,5 +1,4 @@
 //耗时40分钟
-
 launchApp("返利");
 var sh = new Shell(true);
 sleep(6000);
@@ -7,11 +6,9 @@ id("splash_skip").find().click();
 sleep(2000);
 back();
 sleep(2000);
-Tap(540, 1030);
-desc("提现").clickable(true).depth(12).waitFor();
-text("领取400金币").find().click();
-sleep(1000);
-Tap(200, 1600);
+Tap(500, 1000);
+className("android.view.View").text("边看火山热门视频边赚钱").findOne().parent().click();
+sleep(2000);
 for (var i = 1; i <= 210; i++) {
     sleep(10 * 1000);
     swipe(800, 1600, 800, 286, 666);

@@ -8,8 +8,6 @@ sleep(2000);
 back();
 sleep(2000);
 Tap(540, 1030);
-desc("提现").clickable(true).depth(12).waitFor();
-sleep(3000);
 desc("去赚钱").findOne().click();
 sleep(5000);
 for (var i = 1; i <= 34; i++) {
