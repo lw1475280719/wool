@@ -1,11 +1,11 @@
-//耗时20分钟
+//耗时2分钟
 launch(getPackageName("芝嫲视频"));
 var sh = new Shell(true);
 id("check_btn").waitFor();
-Tap(500, 500);
+Tap(100, 100);
 id("tab_tv").className("android.widget.TextView").text("夺宝").findOne().parent().parent().click();
 sleep(2000);
-for (i = 0; i < 140; i++) {
+for (i = 0; i < 7; i++) {
     id("iv_onkey_receive").find().click()
     sleep(300);
     id("rtv_receive").find().click()

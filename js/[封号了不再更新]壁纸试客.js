@@ -5,6 +5,7 @@ dic = {
     8: "com.friendsnotes",
     9: "com.de.oster.alexander.apps.meetingmeter",
     10:"com.mnemogenic.hearing",
+    11:"water.drink.reminder",
 }
 
 lapp = dic[dialogs.input("请输入壁纸试客版号：")];
@@ -21,7 +22,7 @@ text("0.3").findOne().parent().parent().click();
 sleep(1000);
 for (i = 0; i < 280; i++) {
     text("看视频提现秒到账").find().click();
-    text("观看并点击视频广告").find().click()
+    text("继续播放赚钱").find().click()
     sleep(5000);
     if (className("android.widget.ImageView").exists()) {
         back();
