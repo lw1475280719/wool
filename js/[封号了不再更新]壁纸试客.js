@@ -4,6 +4,7 @@ dic = {
     6: "com.repairdamagedcellphonebatteries.LimaLustini",
     8: "com.friendsnotes",
     9: "com.de.oster.alexander.apps.meetingmeter",
+    10:"com.mnemogenic.hearing",
 }
 
 lapp = dic[dialogs.input("请输入壁纸试客版号：")];
