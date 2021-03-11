@@ -10,6 +10,7 @@ for (i = 0; i < 240; i++) {
     back();
     sleep(1000);
     id("tt_video_ad_close_layout").find().click();
+    className("android.view.View").clickable(true).depth(8).find().click();
     id("reward_ad_close").find().click();
     id("cancle").find().click();
     sleep(1000);
