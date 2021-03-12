@@ -6,7 +6,7 @@ id("cancel").find().click();
 sleep(2000);
 Tap(800, 1200);
 for (var i = 0; i < 575; i++) {
-    id("iv_close").find().click();
+    id("imgClose").find().click();
     sleep(6000);
     //Tap(100, 233);
     sleep(2000);
