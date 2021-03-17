@@ -1,14 +1,14 @@
 //耗时30分钟
 launch(getPackageName("百宝箱浏览器"));
 var sh = new Shell(true);
-id("akz").className("android.widget.TextView").text("小视频").findOne().parent().click();
+id("anf").className("android.widget.TextView").text("小视频").findOne().parent().click();
 sleep(2000);
 for (i = 1; i < 110; i++) {
     sleep(14 * 1000);
     Tap(900, 1650);
     sleep(1000);
-    id("lw").find().click();
-    id("aja").find().click();
+    id("mi").find().click();
+    id("alg").find().click();
     sleep(1000);
     swipe(500, 1700, 500, 250, 600);
 

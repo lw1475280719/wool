@@ -1,17 +1,15 @@
 //耗时30分钟
 launch(getPackageName("趣赚清理"));
 var sh = new Shell(true);
-id("ui").waitFor();
+id("atd").className("android.widget.TextView").text("小视频").findOne().parent().click();
 sleep(1000);
-click("小视频");
-sleep(2000);
 for (i = 1; i < 160; i++) {
     toast("计数器:" + i);
     sleep(8000);
     Tap(900, 1650);
     sleep(1000);
-    id("ao0").find().click();
-    id("lw").find().click();
+    id("arf").find().click();
+    id("mj").find().click();
     sleep(1000);
     swipe(500, 1600, 500, 266, 500);
 
