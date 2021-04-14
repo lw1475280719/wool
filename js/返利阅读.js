@@ -6,7 +6,9 @@ id("splash_skip").find().click();
 sleep(2000);
 back();
 sleep(2000);
-Tap(540, 1030);
+Tap(540, 960);
+sleep(2000);
+swipe(800, 1450, 800, 350, 666);
 desc("去赚钱").findOne().click();
 sleep(5000);
 for (var i = 1; i <= 33; i++) {

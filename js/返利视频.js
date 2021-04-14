@@ -6,7 +6,7 @@ id("splash_skip").find().click();
 sleep(2000);
 back();
 sleep(2000);
-Tap(500, 1000);
+Tap(500, 980);
 className("android.view.View").text("边看火山热门视频边赚钱").findOne().parent().click();
 sleep(2000);
 for (var i = 1; i <= 110; i++) {
