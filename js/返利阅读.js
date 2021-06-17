@@ -1,14 +1,12 @@
 //耗时40分钟
 launchApp("返利");
 var sh = new Shell(true);
-sleep(6000);
-id("splash_skip").find().click();
+id("tvName").className("android.widget.TextView").text("我的").findOne().parent().click();
 sleep(2000);
-back();
+swipe(800, 1450, 800, 250, 666);
+Tap(900, 1130);
 sleep(2000);
-Tap(540, 960);
-sleep(2000);
-swipe(800, 1450, 800, 350, 666);
+swipe(800, 1450, 800, 250, 666);
 desc("去赚钱").findOne().click();
 sleep(5000);
 for (var i = 1; i <= 33; i++) {
