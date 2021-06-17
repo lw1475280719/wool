@@ -10,7 +10,7 @@ sleep(2000);
 for (var i = 1; i <= 110; i++) {
     sleep(10 * 1000);
     swipe(800, 1600, 800, 286, 666);
-    toastLog("当前进度：" + i + "/110");
+    toastLog("返利视频当前进度：" + i + "/110");
 }
 
 sh.exec("am force-stop " + getPackageName("返利"));

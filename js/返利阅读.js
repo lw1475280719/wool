@@ -16,7 +16,7 @@ for (var i = 1; i <= 33; i++) {
     sleep(1000);
     swipe(800, 450, 800, 1450, 666);
     sleep(3000);
-    toastLog("当前进度：" + (i / 33 * 100).toFixed(2) + "%");
+    toastLog("返利阅读当前进度：" + (i / 33 * 100).toFixed(2) + "%");
 }
 sh.exec("am force-stop " + getPackageName("返利"));
 sleep(1000);

@@ -11,7 +11,7 @@ Tap(950, 400);
 toastLog("start");
 for (i = 1; i < 200; i++) {
     if (i % 6 != 0) {
-        toastLog("计数器：" + i);
+        toastLog("友趣计数器：" + i);
         sleep(4000);
         Tap(999, 860);
         sleep(5000);

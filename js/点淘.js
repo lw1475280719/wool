@@ -7,7 +7,7 @@ sleep(2000);
 for (i = 0; i < 225; i++) {
     sleep(15 * 1000);
     swipe(500, 1600, 500, 250, 500);
-    toastLog("计数器：" + (i + 1));
+    toastLog("点淘计数器：" + (i + 1));
 }
 sh.exec("am force-stop " + getPackageName("点淘"));
 sleep(1000);

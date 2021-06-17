@@ -12,7 +12,7 @@ for (var i = 0; i < 575; i++) {
     sleep(2000);
     //back();
     sleep(1000);
-    toastLog("计数器：" + (i + 1));
+    toastLog("刷宝计数器：" + (i + 1));
     Swipe(800, 900, 800, 286, 300);
 }
 sh.exec("am force-stop " + getPackageName("刷宝短视频"));
