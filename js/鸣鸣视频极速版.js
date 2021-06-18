@@ -7,11 +7,9 @@ for (i = 0; i < 200; i++) {
     swipe(500, 1500, 500, 150, 500);
     sleep(5500);
     Tap(900, 1600);
-    sleep(500);
-    id("kt").find().click();
-    sleep(500);
-    back();
     sleep(1500);
+    id("kt").find().click();
+    sleep(1000);
     toastLog("鸣鸣计数器:" + (i + 1));
 
 }
