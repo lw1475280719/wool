@@ -16,7 +16,7 @@
 
 
 ###  更多羊毛（AD）
-#### 一个薅羊毛分享平台  ：  [点击前往](http://wool.jie02.top)
+#### 一个薅羊毛分享平台  （地址更新）：  [http://wool.jie02.top](http://wool.jie02.top)
 <hr>
 
 ### 定时任务
