@@ -16,8 +16,8 @@
 ![avatar](https://github.com/jiemo9527/wool/blob/master/xunge.jpeg?raw=true)
 
 
-###  更多羊毛（AD）
-#### 一个薅羊毛分享平台  （地址更新）：  [http://wool.jie02.top](http://wool.jie02.top)
+###  羊毛分享平台（AD）
+#### JIE's 网赚分享平台 （地址更新）：  [http://wool.jie02.top](http://wool.jie02.top)
 <hr>
 
 ### 定时任务
