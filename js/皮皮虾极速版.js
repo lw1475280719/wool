@@ -2,7 +2,7 @@
 launch(getPackageName("皮皮虾极速版"));
 var sh = new Shell(true);
 id("adr").waitFor();
-sleep(2000);
+sleep(5000);
 back();
 for (i = 0; i < 300; i++) {
     swipe(500, 1600, 500, 250, 500);

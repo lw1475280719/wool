@@ -1,15 +1,16 @@
 //耗时1小时30分钟
 launchApp("刷宝短视频");
 var sh = new Shell(true);
-id("cancel").waitFor();
-id("cancel").find().click();
+text("推荐").waitFor();
 sleep(2000);
 Tap(800, 1200);
 for (var i = 0; i < 575; i++) {
     id("imgClose").find().click();
-    sleep(6000);
-    //Tap(100, 233);
+    id("iv_close").find().click();
     sleep(2000);
+    id("btn_close").find().click();
+    //Tap(100, 233);
+    sleep(6000);
     //back();
     sleep(1000);
     toastLog("刷宝计数器：" + (i + 1));

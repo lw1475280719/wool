@@ -10,12 +10,12 @@ swipe(800, 1450, 800, 250, 666);
 desc("去赚钱").findOne().click();
 sleep(5000);
 for (var i = 1; i <= 33; i++) {
-    Tap(245, 450);
+    Tap(245, 500);
     sleep(63 * 1000);
     id("iv_left").find().click();
     sleep(1000);
-    swipe(800, 450, 800, 1450, 666);
-    sleep(3000);
+    swipe(800, 450, 800, 1450, 506);
+    sleep(4000);
     toastLog("返利阅读当前进度：" + (i / 33 * 100).toFixed(2) + "%");
 }
 sh.exec("am force-stop " + getPackageName("返利"));
