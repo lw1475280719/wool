@@ -7,7 +7,7 @@ text("友趣vlog").waitFor();
 text("友趣vlog").find().click();
 id("dy").waitFor();
 sleep(6000);
-Tap(955, 450);
+Tap(55, 200);
 toastLog("start");
 for (i = 1; i < 200; i++) {
     if (i % 6 != 0) {

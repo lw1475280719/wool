@@ -1,6 +1,9 @@
 //耗时90分钟
 launch(getPackageName("闲看视频"));
 var sh = new Shell(true);
+id("navi_bar_main_layout").waitFor();
+sleep(2000);
+back();
 id("navi_bar_main_layout").findOne().click();
 for (i = 0; i < 600; i++) {
     sleep(8000);
