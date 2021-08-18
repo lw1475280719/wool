@@ -1,4 +1,5 @@
 //耗时3小时
+
 launch(getPackageName("快手极速版"));
 var sh = new Shell(true);
 id("sidebar_top_area").waitFor();
