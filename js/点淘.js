@@ -1,8 +1,8 @@
 //耗时1小时
 launch(getPackageName("点淘"));
 var sh = new Shell(true);
-className("android.widget.RelativeLayout").clickable(true).selected(true).waitFor();
-// Tap(700, 150);
+id("homepage2_search_entry_big").waitFor();
+click("视频");
 sleep(2000);
 for (i = 0; i < 450; i++) {
     sleep(7.5 * 1000);
