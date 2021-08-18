@@ -5,9 +5,8 @@ host = "www.189.cn";
 sleep(2000);
 desc("停止").find().click();
 sleep(2000);
-num = id("group_pager").findOne().parent().childCount() + 1;
-toastLog(num);
-for (i = 0; i < num; i++) {
+// num = desc("编辑").findOne(id("group_pager"));
+for (i = 0;i<100; i++) {
     id("edit").findOnce(i).click();
     sleep(2000);
     click("WebSocket 主机");
