@@ -1,3 +1,4 @@
+//第一次使用请切换到“卡片模式”
 //耗时5-20分钟
 launch(getPackageName("U脉消息"));
 var sh = new Shell(true);
