@@ -6,8 +6,8 @@ for (i = 0; i < 2; i++) {
 text("友趣vlog").waitFor();
 text("友趣vlog").find().click();
 id("dy").waitFor();
-sleep(6000);
-Tap(55, 200);
+sleep(12000);
+Tap(55, 100);
 toastLog("start");
 for (i = 1; i < 200; i++) {
     if (i % 6 != 0) {
