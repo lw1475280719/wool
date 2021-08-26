@@ -1,4 +1,4 @@
-//入口：微信收藏它→http://helloone.jingcongcong.cn
+//入口：微信收藏它(新入口)→http://rty.e-zine.top
 //耗时10分钟
 
 launch(getPackageName("微信"));
@@ -9,7 +9,7 @@ click("我");
 sleep(1000);
 click("收藏");
 sleep(1000);
-click("http://helloone.jingcongcong.cn");
+click("http://rty.e-zine.top");
 sleep(1000);
 Tap(100, 250);
 sleep(6000);
@@ -18,7 +18,7 @@ for (i = 0; i < 40; i++) {
     sleep(13 * 1000);
     back();
     sleep(2000);
-    if (text("60分钟后").exists()) {
+    if ("下批文章将") {
         break;
     }
 
