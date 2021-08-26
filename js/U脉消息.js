@@ -2,8 +2,8 @@
 //耗时5-20分钟
 launch(getPackageName("U脉消息"));
 var sh = new Shell(true);
-sleep(5000);
-className("android.widget.ImageView").clickable(true).findOne().click();
+sleep(9000);
+Tap(500, 900);
 sleep(6000);
 for (i = 0; i < 40; i++) {
     if (className("android.widget.ImageView").clickable(true).depth(14).exists()) {
