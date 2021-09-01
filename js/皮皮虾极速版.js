@@ -1,7 +1,7 @@
 //耗时40分钟
 launch(getPackageName("皮皮虾极速版"));
 var sh = new Shell(true);
-id("adu").waitFor();
+id("adq").waitFor();
 sleep(5000);
 back();
 for (i = 0; i < 300; i++) {

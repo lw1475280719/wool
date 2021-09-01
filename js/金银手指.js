@@ -7,21 +7,21 @@ var sh = new Shell(true);
 text("我").waitFor();
 click("我");
 sleep(1000);
-click("收藏");
-sleep(1000);
+Tap(500, 900);
+//click("收藏");
+sleep(4000);
 click("http://rty.e-zine.top");
 sleep(1000);
 Tap(100, 250);
-sleep(6000);
+sleep(9000);
 //开始自动阅读
 for (i = 0; i < 40; i++) {
     sleep(13 * 1000);
-    back();
-    sleep(2000);
-    if ("下批文章将") {
+    if (className("android.view.View").text("提现 ＞").exists()) {
         break;
     }
-
+    back();
+    sleep(2000);
 }
 sh.exec("am force-stop " + getPackageName("微信"));
 sleep(1000);

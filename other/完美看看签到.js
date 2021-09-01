@@ -1,9 +1,11 @@
 //完美看看app签到
 launch(getPackageName("完美看看"));
 var sh = new Shell(true);
-id("rl_search").className("android.widget.RelativeLayout").clickable(true).depth(14).waitFor();
+//id("rl_search").className("android.widget.RelativeLayout").clickable(true).depth(14).waitFor();
+sleep(15 * 1000);
 back();
 id("rl_close").find().click();
+sleep(1000);
 click("任务");
 id("tv_sign").findOne().click();
 sleep(2000);

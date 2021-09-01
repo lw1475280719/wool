@@ -1,7 +1,7 @@
 //耗时1小时
 launch(getPackageName("点淘"));
 var sh = new Shell(true);
-id("homepage2_search_entry_big").waitFor();
+id("tl_homepage2_search_entry_big").waitFor();
 click("视频");
 sleep(2000);
 for (i = 0; i < 450; i++) {
