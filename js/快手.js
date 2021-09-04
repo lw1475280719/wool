@@ -5,7 +5,7 @@ var sh = new Shell(true);
 id("sidebar_top_area").waitFor();
 sleep(5000);
 Tap(500, 800);
-for (i = 0; i < 1003; i++) {
+for (i = 0; i < 940; i++) {
     swipe(500, 1600, 500, 250, 600);
     sleep(2000);
     if (!id("redFloat").exists()) {

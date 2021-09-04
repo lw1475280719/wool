@@ -1,11 +1,11 @@
-//耗时90分钟
+//耗时60分钟
 launch(getPackageName("闲看视频"));
 var sh = new Shell(true);
 id("navi_bar_main_layout").waitFor();
-sleep(2000);
+sleep(6000);
 back();
 id("navi_bar_main_layout").findOne().click();
-for (i = 0; i < 600; i++) {
+for (i = 0; i < 400; i++) {
     sleep(8000);
     toastLog("闲看视频计数器：" + (i + 1));
     swipe(500, 1600, 500, 100, 500);
