@@ -13,7 +13,7 @@ sleep(4000);
 click("http://rty.e-zine.top");
 sleep(1000);
 Tap(100, 250);
-sleep(9000);
+sleep(20*1000);
 //开始自动阅读
 for (i = 0; i < 40; i++) {
     sleep(13 * 1000);
