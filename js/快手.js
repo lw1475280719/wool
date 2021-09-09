@@ -1,5 +1,5 @@
 //耗时3小时
-APP_name = "快手极速版"
+APP_name = "快手极速版";
 
 function start() {
     launch(getPackageName(APP_name));
@@ -15,7 +15,7 @@ function stop(sh) {
 }
 
 function handle() {
-    id("sidebar_top_area").waitFor();
+    id("thanos_home_top_search").waitFor();
     sleep(5000);
     Tap(500, 800);
     for (i = 0; i < 940; i++) {
