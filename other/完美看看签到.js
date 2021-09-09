@@ -1,17 +1,20 @@
 //耗时1分钟
 APP_name = "完美看看"
-function start(){
+
+function start() {
     launch(getPackageName(APP_name));
     var sh = new Shell(true);
     return sh;
 }
-function stop(sh){
+
+function stop(sh) {
     sh.exec("am force-stop " + getPackageName(APP_name));
     sleep(1000);
     sh.exit;
     toastLog("【" + APP_name + "】已完成计划任务并退出APP！");
 }
-function handle(){
+
+function handle() {
     //id("rl_search").className("android.widget.RelativeLayout").clickable(true).depth(14).waitFor();
     sleep(15 * 1000);
     back();
@@ -38,7 +41,8 @@ function handle(){
     back();
 
 }
-start1=start()
+
+start1 = start()
 handle()
 stop(start1)
 

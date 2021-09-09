@@ -1,18 +1,21 @@
 //入口：微信收藏它(新入口)→http://rty.e-zine.top
 //耗时10分钟
 APP_name = "微信"
-function start(){
+
+function start() {
     launch(getPackageName(APP_name));
     var sh = new Shell(true);
     return sh;
 }
-function stop(sh){
+
+function stop(sh) {
     sh.exec("am force-stop " + getPackageName(APP_name));
     sleep(1000);
     sh.exit;
     toastLog("【" + APP_name + "】已完成计划任务并退出APP！");
 }
-function handle(){
+
+function handle() {
     //进入微信收藏并点击
     text("我").waitFor();
     click("我");
@@ -23,7 +26,7 @@ function handle(){
     click("http://rty.e-zine.top");
     sleep(1000);
     Tap(100, 250);
-    sleep(20*1000);
+    sleep(20 * 1000);
     //开始自动阅读
     for (i = 0; i < 40; i++) {
         sleep(13 * 1000);
@@ -34,7 +37,8 @@ function handle(){
         sleep(2000);
     }
 }
-start1=start()
+
+start1 = start()
 handle()
 stop(start1)
 

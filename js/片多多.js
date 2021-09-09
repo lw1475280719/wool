@@ -1,17 +1,20 @@
 //耗时30分钟
 APP_name = "片多多"
-function start(){
+
+function start() {
     launch(getPackageName(APP_name));
     var sh = new Shell(true);
     return sh;
 }
-function stop(sh){
+
+function stop(sh) {
     sh.exec("am force-stop " + getPackageName(APP_name));
     sleep(1000);
     sh.exit;
     toastLog("【" + APP_name + "】已完成计划任务并退出APP！");
 }
-function handle(){
+
+function handle() {
     sleep(5000);
     Tap(500, 500);
     sleep(2000);
@@ -24,7 +27,8 @@ function handle(){
         sleep(5 * 60 * 1000);
     }
 }
-start1=start()
+
+start1 = start()
 handle()
 stop(start1)
 
