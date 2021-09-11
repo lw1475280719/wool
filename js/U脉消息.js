@@ -20,7 +20,7 @@ function handle() {
     Tap(500, 900);
     sleep(6000);
     for (i = 0; i < 99; i++) {
-        if (className("android.widget.ImageView").clickable(true).depth(14).exists()) {
+        if(className("android.widget.ImageView").desc("我的收藏").exists()){
             break;
         }
         sleep(26 * 1000);
