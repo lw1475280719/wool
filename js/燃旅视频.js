@@ -15,7 +15,7 @@ function stop(sh) {
 }
 
 function handle() {
-    text("推荐").waitFor();
+    id("main_home").findOne().click();
     sleep(2000);
     for (var i = 1; i <= 40; i++) {
         sleep(10000);
