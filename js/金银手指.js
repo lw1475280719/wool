@@ -23,7 +23,7 @@ function handle() {
     Tap(500, 900);
     //click("收藏");
     sleep(4000);
-    click("http://rty.e-zine.top");
+    click("http://vvv.e-zine.top/");
     sleep(1000);
     Tap(100, 250);
     sleep(20 * 1000);
