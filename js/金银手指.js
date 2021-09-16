@@ -1,4 +1,4 @@
-//入口：微信收藏它(新入口)→http://rty.e-zine.top
+//入口：微信收藏它(新入口)→http://vvv.e-zine.top/
 //耗时10分钟
 APP_name = "微信"
 
