@@ -1,4 +1,4 @@
-//入口：微信收藏它(新入口)→http://vvv.e-zine.top/
+//入口：微信收藏它(新入口)→iii.zhuwentao52.top
 //耗时10分钟
 APP_name = "微信"
 
@@ -23,7 +23,7 @@ function handle() {
     Tap(500, 900);
     //click("收藏");
     sleep(4000);
-    click("http://vvv.e-zine.top/");
+    click("iii.zhuwentao52.top");
     sleep(1000);
     Tap(100, 250);
     sleep(20 * 1000);
