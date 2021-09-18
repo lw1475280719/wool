@@ -1,7 +1,6 @@
 //入口：微信收藏它(新入口)→iii.zhuwentao52.top
 //耗时10分钟
 APP_name = "微信"
-
 function start() {
     launch(getPackageName(APP_name));
     var sh = new Shell(true);
