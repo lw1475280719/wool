@@ -1,6 +1,7 @@
 //耗时30分钟
 //APP下载地址：http://e.qtread.cn/r?p=RrZ
-APP_name = "划鸭看视频"
+//运行前请手动完成答题5个
+APP_name = "滑鸭趣看"
 
 function start() {
     launch(getPackageName(APP_name));
