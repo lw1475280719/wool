@@ -1,6 +1,5 @@
 //耗时30分钟
 //APP下载地址：http://e.qtread.cn/r?p=RrZ
-//运行前请手动完成答题5个
 APP_name = "滑鸭趣看"
 
 function start() {
@@ -20,15 +19,16 @@ function handle() {
     id("img_close").findOne().click();
     sleep(3000);
     for (i = 0; i < 999; i++) {
-        if (text("去赚钱").exists()) {
-            click("去赚钱");
-        }
+        // if (text("去赚钱").exists()) {
+        //     click("去赚钱");
+        // }
+        click("广告");
         sleep(6000);
         if (text("请稍后").exists()) {
             sleep(121 * 1000);
             swipe(500, 250, 500, 1600, 500);
         }
-        if (!text("请稍后").exists() && !text("去赚钱").exists()
+        if (text("已完成").exists()
             && id("ll_wallet").exists()) {
             break;
         }
