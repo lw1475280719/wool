@@ -1,5 +1,5 @@
-//第一次使用请切换到“卡片模式”
-//耗时5-20分钟
+//请手动完成滑块验证码,后点一下返回
+//耗时10-25分钟
 APP_name = "U脉消息"
 
 function start() {
@@ -17,15 +17,23 @@ function stop(sh) {
 
 function handle() {
     sleep(9000);
-    Tap(500, 900);
-    sleep(6000);
-    for (i = 0; i < 99; i++) {
-        if(className("android.widget.ImageView").desc("我的收藏").exists()){
-            break;
+    for (i = 0; i < 200; i++) {
+
+        Tap(300, 1400);
+        sleep(14 * 1000);
+        if (className("android.widget.Button").exists()) {
+            if (desc("您今日红包已领完").exists()) {
+                break;
+            }
+            className("android.widget.Button").find().click();
+            sleep(500);
+            Tap(500, 1700);
+            sleep(500);
+            Tap(300, 1600);
+            continue;
         }
-        sleep(26 * 1000);
-        Tap(1000, 1900);
-        toastLog(APP_name + "计数器：" + (i + 1));
+        back;
+        sleep(1000);
     }
 }
 
