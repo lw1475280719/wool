@@ -19,17 +19,17 @@ function handle() {
     sleep(9000);
     for (i = 0; i < 200; i++) {
 
-        Tap(300, 1400);
-        sleep(14 * 1000);
+        Tap(300, 1000);
+        sleep(8 * 1000);
         if (className("android.widget.Button").exists()) {
             if (desc("您今日红包已领完").exists()) {
                 break;
             }
             className("android.widget.Button").find().click();
             sleep(500);
-            Tap(500, 1700);
+            Tap(500, 1300);
             sleep(500);
-            Tap(300, 1600);
+            Tap(300, 1200);
             continue;
         }
         back;
