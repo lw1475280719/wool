@@ -6,7 +6,7 @@ for (i = 0; i < 2; i++) {
 }
 text("友趣vlog").waitFor();
 text("友趣vlog").find().click();
-id("dy").waitFor();
+// id("dy").waitFor();
 sleep(12000);
 Tap(55, 100);
 toastLog("start");
