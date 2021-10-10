@@ -1,4 +1,4 @@
-//耗时3小时
+//耗时30分钟
 APP_name = "快音";
 
 function start() {
@@ -15,7 +15,7 @@ function stop(sh) {
 }
 
 function handle() {
-    sleep(30*3600*1000);
+    sleep(28*3600*1000);
 }
 
 start1 = start()
