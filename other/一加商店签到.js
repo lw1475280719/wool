@@ -16,13 +16,13 @@ function stop(sh) {
 
 function handle() {
     id("view_md_switcher").waitFor();
-    click("我的");
-    text("签到").findOne().click();
+    id("normalLable").className("android.widget.TextView").text("我的").findOne().parent().click();
+   sleep(1000);
+    click("签到");
     id("activity_credit_main_sign_btn").findOne().click();
+    sleep(1000);
 }
 
 start1 = start()
 handle()
 stop(start1)
-
-
