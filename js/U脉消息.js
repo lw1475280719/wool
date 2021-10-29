@@ -25,7 +25,10 @@ function handle() {
             back();
         }
         sleep(7000);
-        back();
+        if (!className("android.widget.ImageView").clickable(true).depth(6).exists()) {
+            back();
+        }
+
         sleep(500);
     }
 }
