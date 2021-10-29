@@ -23,7 +23,6 @@ function close_ad() {
     id("tt_video_ad_close_layout").find().click();
     sleep(500);
 }
-
 function handle() {
     className("android.widget.ImageView").clickable(true).depth(6).waitFor();
     sleep(3500);
