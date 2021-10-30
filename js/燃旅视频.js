@@ -15,6 +15,8 @@ function stop(sh) {
 }
 
 function handle() {
+    sleep(6000);
+    back();
     id("main_home").findOne().click();
     sleep(2000);
     for (var i = 1; i <= 40; i++) {
