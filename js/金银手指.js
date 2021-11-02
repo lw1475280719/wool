@@ -1,7 +1,7 @@
-//入口：微信收藏它(新入口)→http://jjuuii.sahaj.cn
+//入口：微信收藏它(新入口)→bggg.xinhengxin.cn
 //耗时10分钟
 APP_name = "微信"
-surl = "http://jjuuii.sahaj.cn"
+surl = "bggg.xinhengxin.cn"
 
 function start() {
     launch(getPackageName(APP_name));
