@@ -16,7 +16,7 @@ function stop(sh) {
 }
 
 function handle() {
-    id("img_close").findOne().click();
+    id("ll_cash").waitFor();
     sleep(3000);
     for (i = 0; i < 999; i++) {
         // if (text("去赚钱").exists()) {

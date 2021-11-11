@@ -19,22 +19,30 @@ function handle() {
     sleep(15 * 1000);
     back();
     id("rl_close").find().click();
-    sleep(1000);
-    click("任务");
-    id("tv_sign").findOne().click();
-    sleep(2000);
-    id("img_close").find().click();
     sleep(3000);
-    click("搜索");
-    className("EditText").findOne().setText("1");
-    id("tv_search").findOne().click();
+    Tap(600, 1900);
     sleep(2000);
-    className("EditText").findOne().setText("2");
-    id("tv_search").findOne().click();
+    className("android.view.View").desc("签到").find().click();
+    sleep(1000);
+    className("android.widget.ImageView").clickable(true).depth(8).find().click();
+    sleep(2000);
+    Tap(850, 1200);
+    className("EditText").findOne().setText("1");
+    sleep(1000);
+    className("android.view.View").desc("搜索").find().click();
     sleep(2000);
     back();
+    sleep(1000);
+    className("EditText").find().setText("2");
+    sleep(1000);
+    className("android.view.View").desc("搜索").find().click();
+    sleep(2000);
+    back();
+    back();
     sleep(5000);
-    click("广告");
+    Tap(600, 1900);
+    sleep(1000);
+    Tap(900, 1400);
     sleep(8000);
     className("android.widget.ImageView").findOne().click();
     sleep(2000);
@@ -45,4 +53,3 @@ function handle() {
 start1 = start()
 handle()
 stop(start1)
-
