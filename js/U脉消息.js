@@ -17,18 +17,12 @@ function stop(sh) {
 
 function handle() {
     className("android.widget.ImageView").clickable(true).depth(6).waitFor();
-    sleep(3500);
+    sleep(3000);
     for (i = 0; i < 200; i++) {
-        Tap(250, 250);
-        sleep(1000);
-        if (text("下载领红包").exists()) {
-            back();
-        }
-        sleep(7000);
-        if (!className("android.widget.ImageView").clickable(true).depth(6).exists()) {
-            back();
-        }
-
+        sleep(3500);
+        Tap(100, 450);
+        sleep(8000);
+        back();
         sleep(500);
     }
 }
@@ -36,7 +30,3 @@ function handle() {
 start1 = start()
 handle()
 stop(start1)
-
-
-
-
