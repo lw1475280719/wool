@@ -1,5 +1,4 @@
-//复活了  请手动完成滑块验证码
-//耗时10-25分钟
+//耗时10分钟
 APP_name = "U脉消息"
 
 function start() {
@@ -17,11 +16,12 @@ function stop(sh) {
 
 function handle() {
     className("android.widget.ImageView").clickable(true).depth(6).waitFor();
-    sleep(3000);
+    sleep(3500);
     for (i = 0; i < 200; i++) {
-        sleep(3500);
-        Tap(100, 450);
+        sleep(2500);
+        Tap(100, 350);
         sleep(8000);
+        className("android.view.View").desc("关闭").find().click();
         back();
         sleep(500);
     }
