@@ -1,5 +1,5 @@
-//耗时1分钟
-APP_name = "完美看看"
+//耗时5秒 
+APP_name = "完美看看";
 
 function start() {
     launch(getPackageName(APP_name));
@@ -15,38 +15,28 @@ function stop(sh) {
 }
 
 function handle() {
-    //id("rl_search").className("android.widget.RelativeLayout").clickable(true).depth(14).waitFor();
-    sleep(15 * 1000);
+    sleep(15000);
     back();
-    id("rl_close").find().click();
-    sleep(3000);
-    Tap(600, 1900);
-    sleep(2000);
-    className("android.view.View").desc("签到").find().click();
+    className("android.view.View").desc("任务\n第 3 个标签，共 4 个").findOne().click();
+    className("android.view.View").desc("签到").findOne().click();
+    className("android.widget.ImageView").clickable(true).depth(8).findOne().click();
     sleep(1000);
-    className("android.widget.ImageView").clickable(true).depth(8).find().click();
-    sleep(2000);
     Tap(850, 1200);
-    className("EditText").findOne().setText("1");
     sleep(1000);
-    className("android.view.View").desc("搜索").find().click();
-    sleep(2000);
+    className("android.view.View").desc("1\n庆余年").findOne().click();
+    sleep(1000);
+    back();
+    className("android.view.View").desc("3\n斗罗大陆").findOne().click();
+    sleep(1000);
     back();
     sleep(1000);
-    className("EditText").find().setText("2");
+    back();
     sleep(1000);
-    className("android.view.View").desc("搜索").find().click();
-    sleep(2000);
+    Tap(850, 1400);
+    sleep(69000);
+    id("tt_video_ad_close_layout").find().click();
     back();
-    back();
-    sleep(5000);
-    Tap(600, 1900);
-    sleep(1000);
-    Tap(900, 1400);
-    sleep(8000);
-    className("android.widget.ImageView").findOne().click();
-    sleep(2000);
-    back();
+
 
 }
 
