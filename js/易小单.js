@@ -1,4 +1,5 @@
 //耗时5分钟
+//APP下载地址：http://gameforum.adspools.cn/appweb/index.html?appId=511&uid=7811365
 APP_name = "易小单";
 
 function start() {
