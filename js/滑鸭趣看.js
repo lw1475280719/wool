@@ -34,7 +34,7 @@ function handle() {
         }
         //关闭广告页
         if (!id("ll_wallet").exists()) {
-            back();
+
             sleep(1000);
             className("android.widget.ImageView").find().click();
             sleep(1000);
@@ -52,5 +52,9 @@ function handle() {
 start1 = start()
 handle()
 stop(start1)
+
+
+
+
 
 

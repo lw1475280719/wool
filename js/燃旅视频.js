@@ -28,9 +28,3 @@ function handle() {
 start1 = start()
 handle()
 stop(start1)
-
-
-
-
-
-

@@ -16,10 +16,11 @@ function stop(sh) {
 
 function handle() {
     id("thanos_home_top_search").waitFor();
-    sleep(5000);
-    Tap(500, 800);
+    sleep(8000);
+    Tap(200, 200);
+    back;
     for (i = 0; i < 940; i++) {
-        swipe(500, 1600, 500, 250, 600);
+        swipe(500, 1440, 500, 120, 500);
         sleep(2000);
         if (!id("redFloat").exists()) {
             swipe(500, 1600, 500, 250, 600);
